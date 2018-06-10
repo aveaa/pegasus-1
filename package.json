@@ -1,0 +1,29 @@
+{
+  "name": "evalbot",
+  "version": "2.9.7",
+  "description": "simple discord.js eval bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/x-495/EvalX.git"
+  },
+  "keywords": [
+    "eval",
+    "discord"
+  ],
+  "dependencies": {
+    "discord.js":"^11.3.0",
+    "superagent":"^3.8.2",
+    "request": "2.81.0",
+    "cheerio": "1.0.0-rc.2"
+  },
+  "author": "X-49",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/x-495/EvalX/issues"
+  },
+  "homepage": "https://github.com/x-495/EvalX#readme"
+}
