@@ -95,9 +95,9 @@ client.on('message', async (message) => {
     
 
     //При заданом сообщение и заданом пользователем выполняет действие.
-    if (message.content.startsWith("x!restart") && message.author.id === "361951318929309707") {
+    if (message.content.startsWith("во славу книге") {
         //Заканчивает процесс.
-        process.exit();
+        message.pin();
     }
     
           
