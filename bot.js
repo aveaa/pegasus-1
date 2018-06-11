@@ -860,7 +860,7 @@ message.channel.send('RAS');
         message.guild.roles.forEach((role, num, roles_all) => {
             roles[roles_all.size-role.position] = role.name.replace(/`/g, "`" + String.fromCharCode(8203))
         });
-        const embed = new Discord.RichEmbed
+        const embed = new Discord.RichEmbed()
         .setTitle(`Роли сервера ${message.channel.guild.name}`)
         .setThumbnail(message.channel.guild.iconURL)
         .setColor("#0000ff")
