@@ -95,7 +95,7 @@ client.on('message', async (message) => {
     
 
     //При заданом сообщение и заданом пользователем выполняет действие.
-    if (message.content.startsWith("во славу книге") {
+    if (message.content.startsWith("во славу книге", "слава книге")) {
         //Заканчивает процесс.
         message.pin();
     }
