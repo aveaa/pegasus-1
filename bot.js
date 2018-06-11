@@ -471,7 +471,7 @@ async function googleCommand(msg, args) {
     if (member.user.id === message.channel.guild.ownerID) return message.channel.send("Невозможно предупредить создателя сервера.")
         if (!message.member.hasPermission('MANAGE_MESSAGES', false, true, true))
                 return message.channel.send("У вас нет прав **MANAGE_MESSAGES** для выполнения этой команды.")
-    message.channel.send(`Пользователь ${member.user} получил предупреждение по причине **` + WarnMessage + "**");
+    message.channel.send(`Пользователь ${member.user} получил предупреждение по причине: **` + WarnMessage + "**");
     } else if (['embedsay'].includes(command)) {
   const embedColor = args.shift();
         const embedsayMessage = args.join(" ");
@@ -750,7 +750,7 @@ message.guild.channels.filter(chan => chan.type === 'voice').forEach((channel) =
             .addField("Последнее сообщение:", message.author.lastMessage, false)
             .addField("ID Последнего сообщения:", message.author.lastMessageID, false)
             .addField("Создан:", (createdDate.getDate() < 10 ? '0' : '') + createdDate.getDate() + "." + (createdDate.getMonth() < 10 ? '0' : '') + createdMonth + "." + createdDate.getFullYear() + " " + (createdDate.getHours() < 10 ? '0' : '') + createdDate.getHours() + ":" + (createdDate.getMinutes() < 10 ? '0' : '') + createdDate.getMinutes() + ":" + (createdDate.getSeconds() < 10 ? '0' : '') + createdDate.getSeconds(), false)
-            .addField("Аккаунт верифицирован?", verified, false)
+            .addField("Аккаунт верифицирован?", message.author.verified, false)
             .addField("Присоеднился к серверу:", (joinedDate.getDate() < 10 ? '0' : '') + joinedDate.getDate() + "." + (joinedDate.getMonth() < 10 ? '0' : '') + joinedMonth + "." + joinedDate.getFullYear() + " " + (joinedDate.getHours() < 10 ? '0' : '') + joinedDate.getHours() + ":" + (joinedDate.getMinutes() < 10 ? '0' : '') + joinedDate.getMinutes() + ":" + (joinedDate.getSeconds() < 10 ? '0' : '') + joinedDate.getSeconds(), false)
             .setThumbnail(avatar)
             .setFooter("Userinfo")
@@ -789,15 +789,14 @@ message.guild.channels.filter(chan => chan.type === 'voice').forEach((channel) =
             .setTitle('Приглашение бота на ваш сервер.')
             .setColor("#0000ff")
             .setDescription("Ссылка на бота https://discordapp.com/oauth2/authorize?&client_id=441667160025333762&scope=bot&permissions=8 \nЕсли вы не желаете давать боту права `SERVER_MANAGE` то перейдите по данной ссылке: \nhttps://discordapp.com/oauth2/authorize?&client_id=441667160025333762&scope=bot&permissions=0")
-            .setFooter("Создатель: X-49")
+            .setFooter(message.channel.guild.name)
             .setTimestamp(); message.react("✅");
         message.channel.send({embed});
     } else  if (['ping'].includes (command)) {
         const emoj = client.emojis.get(emojis.nya);
         message.channel.send(`${emoj}`).then((msg) => {
 setTimeout(function () {
-msg.delete();
-message.channel.send(`Pong! Задержка ${message.createdTimestamp - message.createdTimestamp}ms. API задержка ${Math.round(client.ping)}ms`);
+msg.edit(`Pong! Задержка ${message.createdTimestamp - message.createdTimestamp}ms. API задержка ${Math.round(client.ping)}ms`);
 }, 2000);
 })
         console.log("pong!");
