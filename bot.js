@@ -181,7 +181,7 @@ if (reaction.emoji.name === '❎'){
         if(args[0] === 'leave') return message.member.voiceChannel.leave(); message.channel.send("осуществлен выход из канала: **"+ message.member.voiceChannel.name + "**")
     } else if(['ascii'].includes(command)) {
         request('http://artii.herokuapp.com/make?text='+args.join(' '), function (error, response, body) {
-message.channel.send(body);
+message.channel.send("```"+body+"```");
 });
     } else if(['google'].includes(command)) {
 // Depending on your command framework (or if you use one), it doesn't have to
