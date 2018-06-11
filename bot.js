@@ -419,7 +419,7 @@ async function googleCommand(msg, args) {
   } else if (['avatar', 'av'].includes(command)) {
         //задает 1 слово как пользователя
         let member = message.mentions.members.first();
-      if (member == undefined) {
+      if (!member) {
           member === message.author.id
           }
         //если пользователь не найден или вписано не правильно выдает ошибку
