@@ -94,17 +94,15 @@ client.on('message', async (message) => {
     }
     
 
-    //При заданом сообщение и заданом пользователем выполняет действие.
-    if (message.content.startsWith("слава книге") && (!message.channel.id === "397876243250413569")) {
+   if (message.content.startsWith("слава книге")) {
         //Заканчивает процесс.
         message.pin();
     }
-    
-    if (message.content.startsWith("во слава книге") && (!message.channel.id === "397876243250413569")) {
+    if (message.content.startsWith("во слава книге")) {
         //Заканчивает процесс.
         message.pin();
     }
-    if (message.content.startsWith("во славу книге") && (!message.channel.id === "397876243250413569")) {
+    if (message.content.startsWith("во славу книге")) {
         //Заканчивает процесс.
         message.pin();
     }
