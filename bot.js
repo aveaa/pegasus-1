@@ -95,7 +95,7 @@ client.on('message', async (message) => {
     
 
     //При заданом сообщение и заданом пользователем выполняет действие.
-    if (message.content.startsWith("слава книге")) {
+    if (message.content.startsWith("слава книге") && (!message.chanel.id === '397876243250413569') {
         //Заканчивает процесс.
         message.pin();
     }
