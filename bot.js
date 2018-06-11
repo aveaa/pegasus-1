@@ -172,6 +172,7 @@ if (reaction.emoji.name === '❎'){
         }
     } else if(['voice'].includes(command)) {
         if(args[0] === 'join') return message.member.voiceChannel.join();
+        if(args[0] === 'leave') return message.member.voiceChannel.leave();
     } else if(['google'].includes(command)) {
 // Depending on your command framework (or if you use one), it doesn't have to
 // edit messages so you can rework it to fit your needs. Again, this doesn't have
