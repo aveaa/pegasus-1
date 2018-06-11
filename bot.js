@@ -860,7 +860,13 @@ message.channel.send('RAS');
         message.guild.roles.forEach((role, num, roles_all) => {
             roles[roles_all.size-role.position] = role.name.replace(/`/g, "`" + String.fromCharCode(8203))
         });
-        message.channel.send('```'+roles.join('\n')+'```');
+        const embed = new Discord.RichEmbed
+        .setTitle(`Роли сервера ${message.channel.guild.name}`)
+        .setThumbnail(message.channel.guild.iconURL)
+        .setColor("#0000ff")
+        .setDescription('```'+roles.join('\n')+'```')
+        .setFooter("Могут быть показаны не все роли.")
+        message.channel.send({embed});
     } else if (['embed', 'embedsay', 'e'].includes(command)) {
         try {
             let text = args.join(" ").replace(/\n/g, "\\n");
