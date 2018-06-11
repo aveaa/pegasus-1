@@ -182,8 +182,8 @@ if (reaction.emoji.name === '❎'){
     } else if(['ascii'].includes(command)) {
         message.channel.send('<a:loading:435849475865575424> Обрабатываю запрос...')
         request('http://artii.herokuapp.com/make?text='+args.join(' '), function (error, response, body) {
-message.channel.edit("```"+body+"```")
-            });
+message.channel.send("```"+body+"```");
+});
     } else if(['google'].includes(command)) {
 // Depending on your command framework (or if you use one), it doesn't have to
 // edit messages so you can rework it to fit your needs. Again, this doesn't have
