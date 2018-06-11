@@ -171,8 +171,8 @@ if (reaction.emoji.name === '❎'){
                 .replace(/@/g, "@" + String.fromCharCode(8203));
         }
     } else if(['voice'].includes(command)) {
-        if(args[0] === 'join') return message.member.voiceChannel.join();
-        if(args[0] === 'leave') return message.member.voiceChannel.leave();
+        if(args[0] === 'join') return message.member.voiceChannel.join(); message.channel.send("осуществлен вход в канал: **"+ message.member.voiceChannel.name + "**")
+        if(args[0] === 'leave') return message.member.voiceChannel.leave(); message.channel.send("осуществлен выход из канала: **"+ message.member.voiceChannel.name + "**")
     } else if(['google'].includes(command)) {
 // Depending on your command framework (or if you use one), it doesn't have to
 // edit messages so you can rework it to fit your needs. Again, this doesn't have
