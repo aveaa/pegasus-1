@@ -796,7 +796,7 @@ message.guild.channels.filter(chan => chan.type === 'voice').forEach((channel) =
         const emoj = client.emojis.get(emojis.nya);
         message.channel.send("ping?").then((msg) => {
 setTimeout(function () {
-msg.edit(`Pong! Задержка ${message.createdTimestamp - message.createdTimestamp}ms. API задержка ${Math.round(client.ping)}ms`);
+msg.edit(`Pong! Задержка ${message.createdTimestamp}ms. API задержка ${Math.round(client.ping)}ms`);
 }, 1);
 })
         console.log("pong!");
