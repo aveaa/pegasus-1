@@ -100,6 +100,14 @@ client.on('message', async (message) => {
         message.pin();
     }
     
+    if (message.content.startsWith("во слава книге")) {
+        //Заканчивает процесс.
+        message.pin();
+    }
+    if (message.content.startsWith("во славу книге")) {
+        //Заканчивает процесс.
+        message.pin();
+    }
           
     function clear_count (channel, count, count_all = 0) {
     if (count > 100) {
