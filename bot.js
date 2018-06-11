@@ -794,10 +794,10 @@ message.guild.channels.filter(chan => chan.type === 'voice').forEach((channel) =
         message.channel.send({embed});
     } else  if (['ping'].includes (command)) {
         const emoj = client.emojis.get(emojis.nya);
-        message.channel.send(`${emoj}`).then((msg) => {
+        message.channel.send("ping?").then((msg) => {
 setTimeout(function () {
 msg.edit(`Pong! Задержка ${message.createdTimestamp - message.createdTimestamp}ms. API задержка ${Math.round(client.ping)}ms`);
-}, 2000);
+}, 1);
 })
         console.log("pong!");
     } else if(['test'].includes (command)) {
