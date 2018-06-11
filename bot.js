@@ -93,10 +93,7 @@ client.on('message', async (message) => {
         message.channel.stopTyping();
     }
     
-    if (message.content.startsWith(" ")) {
-        if (message.author.id !== '447425375073730589') return;
-        message.reply("Иди нахуй.")
-        }
+
     //При заданом сообщение и заданом пользователем выполняет действие.
     if (message.content.startsWith("x!restart") && message.author.id === "361951318929309707") {
         //Заканчивает процесс.
@@ -796,7 +793,7 @@ message.guild.channels.filter(chan => chan.type === 'voice').forEach((channel) =
         const emoj = client.emojis.get(emojis.nya);
         message.channel.send("ping?").then((msg) => {
 setTimeout(function () {
-msg.edit(`Pong! Задержка ${message.createdTimestamp}ms. API задержка ${Math.round(client.ping)}ms`);
+msg.edit(`Pong! Задержка ${message.createdTimestamp - message.createdTimestamp}ms. API задержка ${Math.round(client.ping)}ms`);
 }, 1);
 })
         console.log("pong!");
