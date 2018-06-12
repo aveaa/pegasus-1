@@ -180,7 +180,6 @@ if (reaction.emoji.name === '❎'){
         if(args[0] === 'join') return message.member.voiceChannel.join(); message.channel.send("осуществлен вход в канал: **"+ message.member.voiceChannel.name + "**")
         if(args[0] === 'leave') return message.member.voiceChannel.leave(); message.channel.send("осуществлен выход из канала: **"+ message.member.voiceChannel.name + "**")
     } else if(['ascii'].includes(command)) {
-        if (output.length < 1950) return message.channel.send("$")
         request('http://artii.herokuapp.com/make?text='+args.join(' '), function (error, response, body) {
             message.channel.send('<a:loading:435849475865575424> Обрабатываю запрос...').then(function(message) {
 message.edit("```"+body+"```");
