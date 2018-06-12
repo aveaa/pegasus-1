@@ -176,6 +176,103 @@ if (reaction.emoji.name === '❎'){
                 .replace(/`/g, "`" + String.fromCharCode(8203))
                 .replace(/@/g, "@" + String.fromCharCode(8203));
         }
+    } else if(['emojify'].includes(command)) {
+        let text = args.join(" ");
+        let new_text = '';
+        for(let x = 0, sym=''; sym = text.charAt(x); x++) {
+            if (sym !== undefined)
+                switch (sym.toLowerCase()) {
+                        case 'a':
+                        new_text += '🅰';
+                        break;
+                        case ',':
+                        new_text += '🔻';
+                        break;
+                        case 'b':
+                        new_text +='\u200B🅱';
+                        break;
+                        case 'c':
+                        new_text +='\u200B🇨';
+                        break;
+                        case 'd':
+                        new_text +='\u200B🇩';
+                        break;
+                        case 'e':
+                        new_text +='\u200B🇪';
+                        break;
+                        case 'f':
+                        new_text +='\u200B🇫';
+                        break;
+                        case 'g':
+                        new_text +='\u200B🇬';
+                        break;
+                        case 'h':
+                        new_text +='\u200B🇭';
+                        break;
+                        case 'i':
+                        new_text +='\u200B🇮';
+                        break;
+                        case 'j':
+                        new_text +='\u200B🇯';
+                        break;
+                        case 'k':
+                        new_text +='\u200B🇰';
+                        break;
+                        case 'l':
+                        new_text +='\u200B🇱';
+                        break;
+                        case 'm':
+                        new_text +='\u200B🇲'
+                        break;
+                        case 'n':
+                        new_text +='\u200B🇳';
+                        break;
+                        case 'ñ':
+                        new_text +='\u200B🇳');
+                        break;
+                        case 'o':
+                        new_text +='\u200B🅾';
+                        break;
+                        case 'p':
+                        new_text +='\u200B🅿';
+                        break;
+                        case 'q':
+                        new_text +='\u200B🇶';
+                        break;
+                        case 'r':
+                        new_text +='\u200B🇷';
+                        break;
+                        case 's':
+                        new_text +='\u200B🇸';
+                        break;
+                        case 't':
+                        new_text +='\u200B🇹';
+                        break;
+                        case 'u':
+                        new_text +='\u200B🇺';
+                        break
+                        case 'v':
+                        new_text +='\u200B🇻';
+                        break;
+                        case 'w':
+                        new_text +='\u200B🇼';
+                        break;
+                        case 'x':
+                        new_text +='\u200B🇽'
+                        break;
+                        case 'y':
+                        new_text +='\u200B🇾';
+                        break;
+                        case 'z':
+                        new_text +='\u200B🇿';
+                        break;
+                        case undefined:
+                        break;
+                    default:
+                        new_text += sym;
+                }
+        }
+        message.channel.send(new_text);
     } else if(['voice'].includes(command)) {
         if(args[0] === 'join') return message.member.voiceChannel.join(); message.channel.send("осуществлен вход в канал: **"+ message.member.voiceChannel.name + "**")
         if(args[0] === 'leave') return message.member.voiceChannel.leave(); message.channel.send("осуществлен выход из канала: **"+ message.member.voiceChannel.name + "**")
