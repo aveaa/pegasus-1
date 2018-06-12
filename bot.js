@@ -182,6 +182,58 @@ if (reaction.emoji.name === '❎'){
         for(let x = 0, sym=''; sym = text.charAt(x); x++) {
             if (sym !== undefined)
                 switch (sym.toLowerCase()) {
+                        //замена
+                        case '1':
+                        new_text += '1⃣';
+                        break;
+                        case '2':
+                        new_text += '2⃣';
+                        break;
+                        case '3':
+                        new_text += '3⃣';
+                        break;
+                        case '4':
+                        new_text += '4⃣';
+                        break;
+                        case '5':
+                        new_text += '5⃣';
+                        break;
+                        case '6':
+                        new_text += '6⃣'; 
+                        break;
+                        case '7':
+                        new_text += '7⃣';
+                        break;
+                        case '8':
+                        new_text += '8⃣';
+                        break;
+                        case '9':
+                        new_text += '9⃣';
+                        break;
+                        case '10':
+                        new_text += '🔟';
+                        break;
+                        case '0':
+                        new_text += '0⃣';
+                        break;
+                        case 'free':
+                        new_text += '🆓';     
+                        break;
+                        case 'ok':
+                        new_text += '🆗';
+                        break;
+                        case 'ng':
+                        new_text += '🆖';
+                        break;
+                        case 'new':
+                        new_text += '🆕';
+                        break;
+                        case 'cool':
+                        new_text += '🆒';
+                        break;
+                        case 'up':
+                        new_text += '🆙';
+                        break;
                         case 'a':
                         new_text += '🅰';
                         break;
