@@ -228,7 +228,7 @@ if (reaction.emoji.name === '❎'){
                         new_text +='\u200B🇳';
                         break;
                         case 'ñ':
-                        new_text +='\u200B🇳');
+                        new_text +='\u200B🇳';
                         break;
                         case 'o':
                         new_text +='\u200B🅾';
