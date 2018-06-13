@@ -1102,7 +1102,8 @@ message.channel.send('RAS');
                         .setTitle('>:{')
                         .setDescription(`${user} дал(а) пощёчину ${user1}`)
                         .setImage(arr['url'])
-                        .setColor('#ff0000');
+                        .setColor('#ff0000')
+			.setFooter("powered by nekos.life");
                     msg.edit(`${user1}`, {embed});
                 } catch (e) {console.log(e)}
             });
@@ -1123,7 +1124,8 @@ message.channel.send('RAS');
                         .setTitle(':3')
                         .setDescription(`${user} поцеловал(а) ${user1}`)
                         .setImage(arr['url'])
-                        .setColor('#ffff00');
+                        .setColor('#ffff00')
+			.setFooter("powered by nekos.life");
                     msg.edit(`${user1}`, {embed});
                 } catch (e) {console.log(e)}
             });
@@ -1143,7 +1145,8 @@ message.channel.send('RAS');
                     let embed = new Discord.RichEmbed()
                         .setDescription(`${user} пощекотал(а) ${user1}`)
                         .setImage(arr['url'])
-                        .setColor('#ffff00');
+                        .setColor('#ffff00')
+			.setFooter("powered by nekos.life");
                     msg.edit(`${user1}`, {embed});
                 } catch (e) {console.log(e)}
             });
@@ -1164,7 +1167,8 @@ message.channel.send('RAS');
                         .setTitle(':3')
                         .setDescription(`${user} прижался(ась) к ${user1}`)
                         .setImage(arr['url'])
-                        .setColor('#00ffff');
+                        .setColor('#00ffff')
+			.setFooter("powered by nekos.life");
                     msg.edit(`${user1}`, {embed});
                 } catch (e) {console.log(e)}
             });
@@ -1185,7 +1189,8 @@ message.channel.send('RAS');
                         .setTitle(':3')
                         .setDescription(`${user} погладил(а) по голове ${user1}`)
                         .setImage(arr['url'])
-                        .setColor('#ffff00');
+                        .setColor('#ffff00')
+			.setFooter("powered by nekos.life");
                     msg.edit(`${user1}`, {embed});
                 } catch (e) {console.log(e)}
             });
@@ -1206,7 +1211,8 @@ message.channel.send('RAS');
                         .setTitle(':3')
                         .setDescription(`${user} обнял(а) ${user1}`)
                         .setImage(arr['url'])
-                        .setColor('#ffff00');
+                        .setColor('#ffff00')
+		    .setFooter("powered by nekos.life");
                     msg.edit(`${user1}`, {embed});
                 } catch (e) {console.log(e)}
             });
@@ -1227,7 +1233,8 @@ message.channel.send('RAS');
                         .setTitle(':3')
                         .setDescription(`${user} тыкнул(а) в ${user1}`)
                         .setImage(arr['url'])
-                        .setColor('#ffff00');
+                        .setColor('#ffff00')
+		        .setFooter("powered by nekos.life")
                     msg.edit(`${user1}`, {embed});
                 } catch (e) {console.log(e)}
             });
@@ -1240,7 +1247,8 @@ message.channel.send('RAS');
                     let embed = new Discord.RichEmbed()
                         .setTitle("Рандомная картинка Neko")
                         .setImage(arr['url'])
-                        .setColor('#0000ff');
+                        .setColor('#0000ff')
+		        .setFooter("powered by nekos.life");
                     msg.edit({embed});
                 } catch (e) {console.log(e)}
             });
@@ -1253,7 +1261,8 @@ message.channel.send('RAS');
                     let embed = new Discord.RichEmbed()
                         .setTitle("Рандомная картинка Waifu")
                         .setImage(arr['url'])
-                        .setColor('#0000ff');
+                        .setColor('#0000ff')
+		        .setFooter("powered by nekos.life");
                     msg.edit({embed});
                 } catch (e) {console.log(e)}
             });
@@ -1274,7 +1283,8 @@ message.channel.send('RAS');
                     let embed = new Discord.RichEmbed()
                         .setDescription(`${user} дал(а) покушать ${user1}`)
                         .setImage(arr['url'])
-                        .setColor('#ffff00');
+                        .setColor('#ffff00')
+		        .setFooter("powered by nekos.life");
                     msg.edit(`${user1}`, {embed});
                 } catch (e) {console.log(e)}
             });
@@ -1288,7 +1298,9 @@ message.channel.send('RAS');
                     let embed = new Discord.RichEmbed()
                         .setTitle("Рандомная картинка cat")
                         .setImage(arr['url'])
-                        .setColor('#0000ff');
+                        .setColor('#0000ff')
+		        .setFooter("powered by nekos.life");
+		
                     msg.edit({embed});
                 } catch (e) {console.log(e)}
             });
@@ -1303,7 +1315,7 @@ message.channel.send('RAS');
                         .setTitle("Рандомная картинка anal")
                         .setImage(arr['url'])
                         .setColor('#0000ff')
-                        .setFooter(`requested by ${message.author.username}`);
+                        .setFooter(`requested by ${message.author.username} | powered by nekos.life`);
                     msg.edit({embed});
                 } catch (e) {console.log(e)}
             });
@@ -1318,7 +1330,7 @@ message.channel.send('RAS');
                         .setTitle("Рандомная картинка hentai")
                         .setImage(arr['url'])
                         .setColor('#0000ff')
-                        .setFooter(`requested by ${message.author.username}`);
+                        .setFooter(`requested by ${message.author.username} | powered by nekos.life`);
                     msg.edit({embed});
                 } catch (e) {console.log(e)}
             });
@@ -1333,7 +1345,7 @@ message.channel.send('RAS');
                         .setTitle("Рандомная картинка boobs")
                         .setImage(arr['url'])
                         .setColor('#0000ff')
-                        .setFooter(`requested by ${message.author.username}`);
+                        .setFooter(`requested by ${message.author.username} | powered by nekos.life`);
                     msg.edit({embed});
                 } catch (e) {console.log(e)}
             });
@@ -1348,7 +1360,7 @@ message.channel.send('RAS');
                         .setTitle("Рандомная картинка pussy")
                         .setImage(arr['url'])
                         .setColor('#0000ff')
-                        .setFooter(`requested by ${message.author.username}`);
+                        .setFooter(`requested by ${message.author.username} | powered by nekos.life`);
                     msg.edit({embed});
                 } catch (e) {console.log(e)}
             });
@@ -1363,7 +1375,7 @@ message.channel.send('RAS');
                         .setTitle("Рандомная картинка nsfw neko")
                         .setImage(arr['url'])
                         .setColor('#0000ff')
-                        .setFooter(`requested by ${message.author.username}`);
+                        .setFooter(`requested by ${message.author.username} | powered by nekos.life`);
                     msg.edit({embed});
                 } catch (e) {console.log(e)}
             });
