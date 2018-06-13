@@ -869,9 +869,9 @@ message.guild.channels.filter(chan => chan.type === 'voice').forEach((channel) =
             .addField("Fun (continued)", "**x!logo** узнать иконку сервера. \n**x!ascii** [text] - перевести текст в ascii \n**x!emojify** [text] - перевод текста в эмодзи")
             .addField("Mod", "**x!ban** бан пользователя. \n**x!kick** кик пользователя. \n**x!warn** предупредить пользователя. \n**x!prune** - удалить последние 50 сообщений.")
             .addField("Bot own", "**x!eval** эмуляция js кода. \n**x!presence** __[type] [status]__ смена статуса. \n**x!us** приватное сообщение от лица бота.")
-            .addField("Reactions", "**x!kiss** [user] - поцелуй. \n**x!pat** [user] - погладить. \n**x!slap** [user] - ударить. \n**x!hug** [user] - обнять. \n**x!cuddle** [user] - прижаться. \n**x!tickle** [user] - пощекотать. \n**x!poke** [user] - тыкнуть.")
+            .addField("Reactions", "**x!kiss** [user] - поцелуй. \n**x!pat** [user] - погладить. \n**x!nom** [user] - дать поесть. \n**x!slap** [user] - ударить. \n**x!hug** [user] - обнять. \n**x!cuddle** [user] - прижаться. \n**x!tickle** [user] - пощекотать. \n**x!poke** [user] - тыкнуть.")
             .addField("Images", "**x!waifu** - рандомное waifu изображение. \n**x!neko** - рандомное neko изображение. \n**x!cat** - рандомное изображение с котом.")
-            .addField("NSFW", "**x!pussy** \n**x!anal** \**x!hentai** \n**x!boobs**")
+            .addField("NSFW", "**x!pussy** \n**x!anal** \n**x!hentai** \n**x!boobs** \n**x!nNeko**")
             .addField("utility (временно недоступно)", "**x!pin** [channel id] [message id] - закрепить сообщение ботом. \n**x!unpin** [channel id] [message id] - открепить сообщение ботом.")
             .addField("Голос", "[Если вам нравится данный бот - вы можете проголосовать за него тут](https://discordbots.org/bot/441667160025333762) \nГолосовать за одного и того же бота можно каждые 24 часа с 1 и того же аккаунта.")
             .setFooter(message.channel.guild.name)
@@ -1255,7 +1255,7 @@ message.channel.send('RAS');
             });
         });
     } 
-    else if(['feed'].includes(command)) {
+    else if(['feed', 'nom'].includes(command)) {
         message.delete();
         let user = message.author;
         let user1 = message.mentions.users.first();
@@ -1290,7 +1290,7 @@ message.channel.send('RAS');
             });
         });
     } else if(['anal'].includes(command)) {
-        if (!message.channel.nsfw) return message.reply("На данной команде стоит метка *`NSFW`**");
+        if (!message.channel.nsfw) return message.reply("На данной команде стоит метка **`NSFW`**");
         message.channel.send('Загрузка...').then(msg => {
             request('https://nekos.life/api/v2/img/anal', function (error, response, body) {
                 try {
@@ -1305,7 +1305,7 @@ message.channel.send('RAS');
             });
         });
     } else if(['hentai'].includes(command)) {
-        if (!message.channel.nsfw) return message.reply("На данной команде стоит метка *`NSFW`**");
+        if (!message.channel.nsfw) return message.reply("На данной команде стоит метка **`NSFW`**");
         message.channel.send('Загрузка...').then(msg => {
             request('https://nekos.life/api/v2/img/hentai', function (error, response, body) {
                 try {
@@ -1320,7 +1320,7 @@ message.channel.send('RAS');
             });
         });
     } else if(['boobs'].includes(command)) {
-        if (!message.channel.nsfw) return message.reply("На данной команде стоит метка *`NSFW`**");
+        if (!message.channel.nsfw) return message.reply("На данной команде стоит метка **`NSFW`**");
         message.channel.send('Загрузка...').then(msg => {
             request('https://nekos.life/api/v2/img/boobs', function (error, response, body) {
                 try {
@@ -1335,13 +1335,28 @@ message.channel.send('RAS');
             });
         });
     } else if(['pussy'].includes(command)) {
-        if (!message.channel.nsfw) return message.reply("На данной команде стоит метка *`NSFW`**");
+        if (!message.channel.nsfw) return message.reply("На данной команде стоит метка **`NSFW`**");
         message.channel.send('Загрузка...').then(msg => {
             request('https://nekos.life/api/v2/img/pussy', function (error, response, body) {
                 try {
                     let arr = JSON.parse(body);
                     let embed = new Discord.RichEmbed()
                         .setTitle("Рандомная картинка pussy")
+                        .setImage(arr['url'])
+                        .setColor('#0000ff')
+                        .setFooter(`requested by ${message.author.username}`);
+                    msg.edit({embed});
+                } catch (e) {console.log(e)}
+            });
+        });
+    } else if(['nneko', 'nNeko'].includes(command)) {
+        if (!message.channel.nsfw) return message.reply("На данной команде стоит метка **`NSFW`**");
+        message.channel.send('Загрузка...').then(msg => {
+            request('https://nekos.life/api/v2/img/nsfw_neko_gif', function (error, response, body) {
+                try {
+                    let arr = JSON.parse(body);
+                    let embed = new Discord.RichEmbed()
+                        .setTitle("Рандомная картинка nsfw neko")
                         .setImage(arr['url'])
                         .setColor('#0000ff')
                         .setFooter(`requested by ${message.author.username}`);
