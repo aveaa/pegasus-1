@@ -871,6 +871,7 @@ message.guild.channels.filter(chan => chan.type === 'voice').forEach((channel) =
             .addField("Bot own", "**x!eval** эмуляция js кода. \n**x!presence** __[type] [status]__ смена статуса. \n**x!us** приватное сообщение от лица бота.")
             .addField("Reactions", "**x!kiss** [user] - поцелуй. \n**x!pat** [user] - погладить. \n**x!slap** [user] - ударить. \n**x!hug** [user] - обнять. \n**x!cuddle** [user] - прижаться. \n**x!tickle** [user] - пощекотать. \n**x!poke** [user] - тыкнуть.")
             .addField("Images", "**x!waifu** - рандомное waifu изображение. \n**x!neko** - рандомное neko изображение. \n**x!cat** - рандомное изображение с котом.")
+            .addField("NSFW", "**x!pussy** \n**x!anal** \**x!hentai** \n**x!boobs**")
             .addField("utility (временно недоступно)", "**x!pin** [channel id] [message id] - закрепить сообщение ботом. \n**x!unpin** [channel id] [message id] - открепить сообщение ботом.")
             .addField("Голос", "[Если вам нравится данный бот - вы можете проголосовать за него тут](https://discordbots.org/bot/441667160025333762) \nГолосовать за одного и того же бота можно каждые 24 часа с 1 и того же аккаунта.")
             .setFooter(message.channel.guild.name)
@@ -1233,7 +1234,7 @@ message.channel.send('RAS');
                 try {
                     let arr = JSON.parse(body);
                     let embed = new Discord.RichEmbed()
-                        .setTitle("Рандомная картинка **Neko**")
+                        .setTitle("Рандомная картинка Neko")
                         .setImage(arr['url'])
                         .setColor('#0000ff');
                     msg.edit({embed});
@@ -1246,7 +1247,7 @@ message.channel.send('RAS');
                 try {
                     let arr = JSON.parse(body);
                     let embed = new Discord.RichEmbed()
-                        .setTitle("Рандомная картинка **Waifu**")
+                        .setTitle("Рандомная картинка Waifu")
                         .setImage(arr['url'])
                         .setColor('#0000ff');
                     msg.edit({embed});
@@ -1275,14 +1276,75 @@ message.channel.send('RAS');
             });
         });
     } else if(['cat'].includes(command)) {
+        
         message.channel.send('Загрузка...').then(msg => {
             request('https://nekos.life/api/v2/img/meow', function (error, response, body) {
                 try {
                     let arr = JSON.parse(body);
                     let embed = new Discord.RichEmbed()
-                        .setTitle("Рандомная картинка **Cat**")
+                        .setTitle("Рандомная картинка cat")
                         .setImage(arr['url'])
                         .setColor('#0000ff');
+                    msg.edit({embed});
+                } catch (e) {console.log(e)}
+            });
+        });
+    } else if(['anal'].includes(command)) {
+        if (!message.channel.nsfw) return message.reply("На данной команде стоит метка *`NSFW`**");
+        message.channel.send('Загрузка...').then(msg => {
+            request('https://nekos.life/api/v2/img/anal', function (error, response, body) {
+                try {
+                    let arr = JSON.parse(body);
+                    let embed = new Discord.RichEmbed()
+                        .setTitle("Рандомная картинка anal")
+                        .setImage(arr['url'])
+                        .setColor('#0000ff')
+                        .setFooter(`requested by ${message.author.username}`);
+                    msg.edit({embed});
+                } catch (e) {console.log(e)}
+            });
+        });
+    } else if(['hentai'].includes(command)) {
+        if (!message.channel.nsfw) return message.reply("На данной команде стоит метка *`NSFW`**");
+        message.channel.send('Загрузка...').then(msg => {
+            request('https://nekos.life/api/v2/img/hentai', function (error, response, body) {
+                try {
+                    let arr = JSON.parse(body);
+                    let embed = new Discord.RichEmbed()
+                        .setTitle("Рандомная картинка hentai")
+                        .setImage(arr['url'])
+                        .setColor('#0000ff')
+                        .setFooter(`requested by ${message.author.username}`);
+                    msg.edit({embed});
+                } catch (e) {console.log(e)}
+            });
+        });
+    } else if(['boobs'].includes(command)) {
+        if (!message.channel.nsfw) return message.reply("На данной команде стоит метка *`NSFW`**");
+        message.channel.send('Загрузка...').then(msg => {
+            request('https://nekos.life/api/v2/img/boobs', function (error, response, body) {
+                try {
+                    let arr = JSON.parse(body);
+                    let embed = new Discord.RichEmbed()
+                        .setTitle("Рандомная картинка boobs")
+                        .setImage(arr['url'])
+                        .setColor('#0000ff')
+                        .setFooter(`requested by ${message.author.username}`);
+                    msg.edit({embed});
+                } catch (e) {console.log(e)}
+            });
+        });
+    } else if(['pussy'].includes(command)) {
+        if (!message.channel.nsfw) return message.reply("На данной команде стоит метка *`NSFW`**");
+        message.channel.send('Загрузка...').then(msg => {
+            request('https://nekos.life/api/v2/img/pussy', function (error, response, body) {
+                try {
+                    let arr = JSON.parse(body);
+                    let embed = new Discord.RichEmbed()
+                        .setTitle("Рандомная картинка pussy")
+                        .setImage(arr['url'])
+                        .setColor('#0000ff')
+                        .setFooter(`requested by ${message.author.username}`);
                     msg.edit({embed});
                 } catch (e) {console.log(e)}
             });
