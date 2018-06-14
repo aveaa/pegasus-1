@@ -176,6 +176,11 @@ if (reaction.emoji.name === '❎'){
                 .replace(/`/g, "`" + String.fromCharCode(8203))
                 .replace(/@/g, "@" + String.fromCharCode(8203));
         }
+    } else if(['tts'].includes(command)) {
+	    if(!message.member.hasPermission('KICK_MEMBERS')) return message.reply("Вы не являетесь модератором.");
+	    const ttsmessage = args.join(" ")
+	    message.channel.send(ttsmessage, {tts: true});
+	    message.delete();
     } else if(['pinvite'].includes(command)) {
         if(!message.member.hasPermission('KICK_MEMBERS')) return message.reply("Вы не являетесь модератором.");
         const members = message.guild.members.filter(member => member.user.presence.game && /(discord\.(gg|io|me)\/.+|discordapp\.com\/invite\/.+)/i.test(member.user.presence.game.name));
