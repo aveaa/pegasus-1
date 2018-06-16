@@ -169,9 +169,9 @@ client.on('message', async (message) => {
     } else if(['addrole'].includes(command)) {
   if(!message.member.hasPermission('MANAGE_ROLES')) return message.reply("Вы не являетесь модератором.");
   let role = message.mentions.roles.first();
-  if (!role) return message.channel.send(`You need to mention a role.`);
+  if (!role) return message.channel.send(`Выберите роль.`);
   let member = message.mentions.members.first();
-  if (!member) return message.channel.send("Нужны упоминания.");
+  if (!member) return message.channel.send("Выберите пользователя.");
   let roleid = role.id;
   let rolename = role.name;
   
