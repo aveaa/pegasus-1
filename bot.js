@@ -175,7 +175,7 @@ client.on('message', async (message) => {
 	    message.channel.send(ttsmessage, {tts: true});
 	    message.delete();
     } else if(['pinvite'].includes(command)) {
-        if(!message.member.hasPermission('KICK_MEMBERS')) return message.reply("Вы не являетесь модератором.");
+        if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply("Вы не являетесь модератором.");
         const members = message.guild.members.filter(member => member.user.presence.game && /(discord\.(gg|io|me)\/.+|discordapp\.com\/invite\/.+)/i.test(member.user.presence.game.name));
 return message.channel.send(members.map(member => `\`${member.id}\` ${member.displayName}`).join("\n") || "людей используйщих presence как приглашение нету.");
 	} else if(['emojify'].includes(command)) {
@@ -793,10 +793,12 @@ if (!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("*
 	  
     } else if (['createEmoji'].includes(command)) {
 	    if(!message.member.hasPermission("MANAGE_EMOJIS")) return message.reply("у вас нету нужных прав");
-	    const url = (args[0])
-	    const name = (args[1])
+	    const url = args[0];
+	    const name = args[1];
+	    if(!url) return message.reply("нужна ссылка на картинку")
+	    if(!url) return message.reply("нужно название");
 	    message.channel.guild.createEmoji(url, name)
-	    message.reply(`эмодзи :${name}: успешно создано.`);
+	    message.reply(`эмодзи :${name}: успешно создано.`)
     } else if (['vote'].includes(command) && message.channel.guild.id === "422775194281705493") {
         const embed = new Discord
             .RichEmbed().setColor("0000ff")
