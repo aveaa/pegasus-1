@@ -166,7 +166,19 @@ client.on('message', async (message) => {
                 .replace(/`/g, "`" + String.fromCharCode(8203))
                 .replace(/@/g, "@" + String.fromCharCode(8203));
         }
-    } else if(['addrole'].includes(command)) {
+    } else if(['restart'].includes(command)) {
+	    function restart(channel) {
+    channel.send("Начинаю перезагрузку...")
+    .then(m => m.delete(5000))
+    .then(() => client.destroy())
+    .then(() => client.login(process.env.BOT_TOKEN))
+    .catch(err => console.error(err))
+    .then(() => message.channel.send("Перезапуск осуществлен"))
+  }
+  
+  restart(message.channel)
+} 
+	if(['addrole'].includes(command)) {
   if(!message.member.hasPermission('MANAGE_ROLES')) return message.reply("Вы не являетесь модератором.");
   let role = message.mentions.roles.first();
   if (!role) return message.channel.send(`Выберите роль.`);
@@ -682,7 +694,7 @@ async function googleCommand(msg, args) {
   var sec = Math.round(client.uptime / 1000) % 60 + " секунд"
   if (hrs == "0 час(ов),") hrs = ""
   if (mins == " 0 минут, ") mins = ""
-  let uptime = hrs+mins+sec
+  let uptime = hrs + mins + sec;
         let users = 0;
 client.guilds.forEach((guild) => {users += client.users.size});
         const embed = new Discord.RichEmbed()
@@ -693,10 +705,10 @@ client.guilds.forEach((guild) => {users += client.users.size});
       /*  embed.addField('ОЗУ', process.env.WEB_MEMORY + 'мб / ' + process.env.MEMORY_AVAILABLE + 'мб', true);
         embed.addField('Сервер', process.env.DYNO, true);
         embed.addField('Порт', process.env.PORT, true);*/
-        embed.addField('Количество серверов', `${client.guilds.size}`)
-        embed.addField('Количество пользователей', `${client.users.size}`)
-        embed.addField('Количество каналов', `${client.channels.size}`)
-        embed.addField('Со-Авторы, помощники', '<@378646988784271361>, <@421030089732653057>')
+        embed.addField('Количество серверов', client.guilds.size)
+        embed.addField('Количество пользователей', client.users.size)
+        embed.addField('Количество каналов', client.channels.size)
+        embed.addField('Со-Авторы', '<@421030089732653057>')
         message.channel.send(embed);
         message.delete();
 
