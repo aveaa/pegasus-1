@@ -963,7 +963,7 @@ message.guild.channels.filter(chan => chan.type === 'voice').forEach((channel) =
             .setColor("#0000ff")
             .setDescription("Ссылка на бота https://discordapp.com/oauth2/authorize?&client_id=441667160025333762&scope=bot&permissions=8 \nЕсли вы не желаете давать боту права `SERVER_MANAGE` то перейдите по данной ссылке: \nhttps://discordapp.com/oauth2/authorize?&client_id=441667160025333762&scope=bot&permissions=0")
             .setFooter(message.channel.guild.name)
-            .setTimestamp(); message.react("✅");
+            .setTimestamp(); message.react("✅"); console.log(`${message.author} использовал invite`)
         message.channel.send({embed});
     } else  if (['ping'].includes (command)) {
         const emoj = client.emojis.get(emojis.nya);
