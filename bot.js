@@ -677,13 +677,20 @@ async function googleCommand(msg, args) {
         message.channel.send({embed});
         message.delete().catch(O_o => {});
     } else if (['about'].includes(command)) {
+	    var days = Math.round(bot.uptime / (1000 * 60 * 60 * 24)) + " дней(дня),"
+	var hrs = Math.round(bot.uptime / (1000 * 60 * 60)) + " час(ов),"
+  var mins = " " + Math.round(bot.uptime / (1000 * 60)) % 60 + " минут, "
+  var sec = Math.round(bot.uptime / 1000) % 60 + " секунд"
+  if (hrs == "0 hour(s),") hrs = ""
+  if (mins == " 0 minute(s), ") mins = ""
+  let uptime = days+hrs+mins+sec
         let users = 0;
 client.guilds.forEach((guild) => {users += client.users.size});
         const embed = new Discord.RichEmbed()
             .setColor("#00ff00")
             .setTitle('Статистика')
             .setThumbnail(client.user.avatarURL);
-        embed.addField('Пинг', client.ping, true);
+        embed.addField('Пинг', client.ping, true);embed.addField("UpTime", uptime)
       /*  embed.addField('ОЗУ', process.env.WEB_MEMORY + 'мб / ' + process.env.MEMORY_AVAILABLE + 'мб', true);
         embed.addField('Сервер', process.env.DYNO, true);
         embed.addField('Порт', process.env.PORT, true);*/
@@ -693,19 +700,7 @@ client.guilds.forEach((guild) => {users += client.users.size});
         embed.addField('Со-Авторы, помощники', '<@378646988784271361>, <@421030089732653057>')
         message.channel.send(embed);
         message.delete();
-    } else if (['idea'].includes(command) && message.channel.guild.id === "419529589623357450") {
-        const embed = new Discord
-            .RichEmbed().setColor("0000ff")
-            .setTitle('Ваши идеи')
-            .setDescription(args.join(' '))
-            .addField('Автор', message.author);
-        let nick = message.author.username;
-        if (message.member.nickname != null) nick = message.member.nickname;
-        client.fetchWebhook('434303293427154956', 'DMd-wNbBAzAAcN4_mQ7H44ncvSH28RS6vkxdJ_XnR4ZMSBcf6slMxOWTr0zRPkrcKCQk').then(webhook => {
-            webhook.send('', {username: nick, avatarURL: message.author.avatarURL, embeds: [embed]}).catch(console.error);
-        }).catch(console.error);
-        message.channel.send(`**Голосование пользователя ${message.author} успешно начато**`);
-        message.delete();
+
     } else if (['servers'].includes(command)) {
         let guilds = [];
         client.guilds.forEach(function (guild) {guilds.push(guild.name.replace(/`/g, "`" + String.fromCharCode(8203)) + ' OWNER: ' + guild.owner.user.tag.replace(/`/g, "`" + String.fromCharCode(8203)) + ' ID: ' + guild.id)});
