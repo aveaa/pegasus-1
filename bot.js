@@ -129,7 +129,7 @@ client.on('message', async (message) => {
   .setColor("#00ff00")
   .setTimestamp();
   welcome.send({embed});
-});
+});*/
     
     if (message.author.bot) return;
     //Отвечает за установку префикса в команды
