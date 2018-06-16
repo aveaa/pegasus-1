@@ -195,7 +195,7 @@ client.on('message', async (message) => {
 	    let vremya = args.join(' ')
   let embed = new Discord.RichEmbed()
   .setTitle("Timer")
-  .setDescription("Ок, я засек время, я скажу когда времч кончится.")
+  .setDescription("Ок, я засек время, я скажу когда время кончится.")
   .setTimestamp()
   .setColor("0000ff")
   message.channel.send({embed})
@@ -204,7 +204,7 @@ client.on('message', async (message) => {
     embed.setDescription(`${message.author} время вышло.`)
     embed.setColor("#0000ff")
     message.channel.send({embed: embed})
-  }, ms(vremya))
+  }, (vremya))
 }
     if(['pinvite'].includes(command)) {
         if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply("Вы не являетесь модератором.");
