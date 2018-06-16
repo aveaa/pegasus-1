@@ -207,7 +207,7 @@ client.on('message', async (message) => {
 	    let vremya = args.join(' ')
   let embed = new Discord.RichEmbed()
   .setTitle("Timer")
-  .setDescription(`Ок, я засек ${Math.round(vremya.uptime / (1000 * 60 * 60 * 24))} дней, ${Math.round(vremya.uptime / (1000 * 60 * 60))} часов, ${Math.round(vremya.uptime / (1000 * 60)) % 60} минут, ${Math.round(vremya / 1000) % 60} секунд. \nЯ скажу когда время кончится.`)
+  .setDescription(`Ок, я засек ${Math.round(vremya / (1000 * 60 * 60 * 24))} дней, ${Math.round(vremya / (1000 * 60 * 60))} часов, ${Math.round(vremya / (1000 * 60)) % 60} минут, ${Math.round(vremya / 1000) % 60} секунд. \nЯ скажу когда время кончится.`)
   .setTimestamp()
   .setColor("0000ff")
   message.channel.send({embed})
