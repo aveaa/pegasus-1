@@ -790,6 +790,13 @@ if (!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("*
         }).catch(console.error);
         message.channel.send(`**Репорт пользователя ${message.author} принят.**`);
         message.delete();
+	  
+    } else if (['createEmoji'].includes(command)) {
+	    if(!message.member.hasPermission("MANAGE_EMOJIS")) return message.reply("у вас нету нужных прав");
+	    const url = args[0];
+	    const name = args[1];
+	    message.channel.guild.createEmoji(url, name);
+	    message.reply(`эмодзи :${name} успешно создано.`);
     } else if (['vote'].includes(command) && message.channel.guild.id === "422775194281705493") {
         const embed = new Discord
             .RichEmbed().setColor("0000ff")
@@ -850,7 +857,6 @@ message.guild.channels.filter(chan => chan.type === 'voice').forEach((channel) =
                 embed.addField('>Количество ролей<', message.channel.guild.roles.size, true)
                 embed.addField('>Количество эмодзи<', message.channel.guild.emojis.size, false)
                 embed.addField('>Количество каналов<', message.channel.guild.channels.size, true)
-	        embed.addField('>Количество приглашений<', invi)
                 embed.addField('>Сервер большой?<', large, false)
                 embed.addField('>Системный канал<', message.channel.guild.systemChannel !== null ? message.channel.guild.systemChannel : 'Нету.', true)
                 embed.addField('>ID Системного канала<', message.channel.guild.systemChannelID !== null ? message.channel.guild.systemChannelID : 'Нету.', false)
@@ -871,7 +877,7 @@ message.guild.channels.filter(chan => chan.type === 'voice').forEach((channel) =
             .setThumbnail('https://cdn.pixabay.com/photo/2016/06/15/15/02/info-1459077_960_720.png')
             .addField("Fun", "**x!say** сообщение от бота. \n**x!embed** (x!helpembed) embed сообщение от бота. \n**x!rs [ид канала] [сообщение]** отослать сообщение из 1 чата в другой. \n**x!invite** пригласить бота на сервер.) \n**x!servers** узнать сервера бота,их создателей, их ID. (Временно недоступно)\n**x!roles** узнать роли сервера. \n**x!afk** <причина> \n**x!ping** проверка. \n**x!ship** проверка совместимости. \n**x!summon** [user] <reason> - вызвать пользователя с причиной (или без) \n**x!about** информация об количествах серверов, пользователей, каналов. \n**x!userinfo** информация об вас. \n**x!serverinfo** информация об сервере. \n**x!nya** тест команда эмодзи. \n**x!poll** создать голосование. \n**x!idea** идея по поводу сервера. (Quasar only) \n**x!vote** начать голосование (Galactic empire only) \n**x!avatar** просмотр аватара. \n**бот пиши** начну писать в чат где вы меня вызвали. \n**бот не пиши** перестану писать в чат где вы меня вызвали.")
             .addField("Fun (continued)", "**x!logo** узнать иконку сервера. \n**x!ascii** [text] - перевести текст в ascii \n**x!emojify** [text] - перевод текста в эмодзи")
-            .addField("Mod", "**x!ban** [user] -бан пользователя. \n**x!kick** [user] - кик пользователя. \n**x!warn** предупредить пользователя. \n**x!pinvite** - проверить на наличие приглашений в статусах. \n**x!prune** - удалить последние 50 сообщений.")
+            .addField("Mod", "**x!ban** [user] -бан пользователя. \n**x!kick** [user] - кик пользователя. \n**x!warn** предупредить пользователя. \n**x!createEmoji** [url] [name] - создать эмодзи. \n**x!pinvite** - проверить на наличие приглашений в статусах. \n**x!prune** - удалить последние 50 сообщений.")
             .addField("Bot own", "**x!eval** [code] - эмуляция js кода. \n**x!presence** __[type] [status]__ - смена статуса. \n**x!us** - приватное сообщение от лица бота.")
             .addField("Reactions", "**x!kiss** [user] - поцелуй. \n**x!pat** [user] - погладить. \n**x!nom** [user] - дать поесть. \n**x!slap** [user] - ударить. \n**x!hug** [user] - обнять. \n**x!cuddle** [user] - прижаться. \n**x!tickle** [user] - пощекотать. \n**x!poke** [user] - тыкнуть.")
             .addField("Images", "**x!waifu** - рандомное waifu изображение. \n**x!neko** - рандомное neko изображение. \n**x!cat** - рандомное изображение с котом.")
