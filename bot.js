@@ -88,17 +88,7 @@ client.on('message', async (message) => {
         client.channels.get('449845125816909834').send('Сообщение от '+message.author.username+': ```'+message.content.replace(/`/g, "`" + String.fromCharCode(8203))+'```')
     }
 	
-client.on('guildMemberAdd', member => {
-  const welcome = member.guild.systemChannel;
-  if (!welcome) return;
-  const embed = new Discord.RichEmbed()
-  .setTitle("Welcome")
-  .setDescription(`Добро пожаловать ${member}, ты попал на сервер ${member.guild.name} \nСейчас на сервере ${member.guild.memberCount} пользователей.`)
-  .setFooter(member.guild.name)
-  .setColor("#00ff00")
-  .setTimestamp();
-  welcome.send({embed});
-});
+
 //При заданом сообщение выполняет действие.
     if (message.content.startsWith("бот не пиши")) {
         //Отвечает за то чтобы бот перестал писать в вызваном чате.
