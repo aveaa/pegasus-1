@@ -185,6 +185,7 @@ client.on('message', async (message) => {
   if (member.displayName) {
     em.setDescription(`Роль ${rolename} успешно добавлена к пользователю ${member.displayName}.`)
   }
+};
 	    if(['tts'].includes(command)) {
 	    if(!message.member.hasPermission('KICK_MEMBERS')) return message.reply("Вы не являетесь модератором.");
 	    const ttsmessage = args.join(" ")
