@@ -166,7 +166,7 @@ client.on('message', async (message) => {
                 .replace(/`/g, "`" + String.fromCharCode(8203))
                 .replace(/@/g, "@" + String.fromCharCode(8203));
         }
-    } else if(['restart'].includes(command)) {
+    } /*else if(['restart'].includes(command)) {
 	    function restart(channel) {
     channel.send("Начинаю перезагрузку...")
     .then(m => m.delete(5000))
@@ -177,7 +177,7 @@ client.on('message', async (message) => {
   }
   
   restart(message.channel)
-} 
+} */
 	if(['addrole'].includes(command)) {
   if(!message.member.hasPermission('MANAGE_ROLES')) return message.reply("Вы не являетесь модератором.");
   let role = message.mentions.roles.first();
@@ -694,14 +694,14 @@ async function googleCommand(msg, args) {
   var sec = Math.round(client.uptime / 1000) % 60 + " секунд"
   if (hrs == "0 час(ов),") hrs = ""
   if (mins == " 0 минут, ") mins = ""
-  let uptime = hrs + mins + sec;
+ // let uptime = hrs + mins + sec
         let users = 0;
 client.guilds.forEach((guild) => {users += client.users.size});
         const embed = new Discord.RichEmbed()
             .setColor("#00ff00")
             .setTitle('Статистика')
             .setThumbnail(client.user.avatarURL);
-        embed.addField('Пинг', client.ping, true);embed.addField("UpTime", uptime)
+        embed.addField('Пинг', client.ping, true);embed.addField("UpTime", `${hrs}${mins}${sec}`)
       /*  embed.addField('ОЗУ', process.env.WEB_MEMORY + 'мб / ' + process.env.MEMORY_AVAILABLE + 'мб', true);
         embed.addField('Сервер', process.env.DYNO, true);
         embed.addField('Порт', process.env.PORT, true);*/
