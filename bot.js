@@ -689,12 +689,6 @@ async function googleCommand(msg, args) {
         message.channel.send({embed});
         message.delete().catch(O_o => {});
     } else if (['about'].includes(command)) {
-  var hrs = Math.round(client.uptime / (1000 * 60 * 60)) + " hour(s),"
-  var mins = " " + Math.round(client.uptime / (1000 * 60)) % 60 + " minute(s), "
-  var sec = Math.round(client.uptime / 1000) % 60 + " second(s)"
-  if (hrs == "0 hour(s),") hrs = ""
-  if (mins == " 0 minute(s), ") mins = ""
-  let uptime = hrs+mins+sec
   
         let users = 0;
 client.guilds.forEach((guild) => {users += client.users.size});
@@ -702,7 +696,8 @@ client.guilds.forEach((guild) => {users += client.users.size});
             .setColor("#00ff00")
             .setTitle('Статистика')
             .setThumbnail(client.user.avatarURL);
-        embed.addField('Пинг', client.ping, true);embed.addField("UpTime", uptime)
+        embed.addField('Пинг', client.ping, true);
+	embed.addField("UpTime", `${Math.round(client.uptime / (1000 * 60 * 60 * 24))} дней, ${Math.round(client.uptime / (1000 * 60 * 60))} часов, ${Math.round(client.uptime / (1000 * 60)) % 60} минут, ${Math.round(client.uptime / 1000) % 60} секунд`)
       /*  embed.addField('ОЗУ', process.env.WEB_MEMORY + 'мб / ' + process.env.MEMORY_AVAILABLE + 'мб', true);
         embed.addField('Сервер', process.env.DYNO, true);
         embed.addField('Порт', process.env.PORT, true);*/
