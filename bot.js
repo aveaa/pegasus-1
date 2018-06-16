@@ -14,9 +14,6 @@ vm.createContext(codeContext);
 const client = new Discord.Client();
 //префикс
 const prefix = "x!";
-//массив ролей
-const rule = {own: "421373056158662656", admin: "421244086557605888"};
-//массив сосздателей
 const creators = ['361951318929309707'];
 //массив эмодзи
 const emojis = {nya:'435849475865575424'}
@@ -169,6 +166,24 @@ client.on('message', async (message) => {
                 .replace(/`/g, "`" + String.fromCharCode(8203))
                 .replace(/@/g, "@" + String.fromCharCode(8203));
         }
+    } else if(['addrole'].includes(command)) {
+	     if(!message.member.hasPermission('MANAGE_ROLES')) return message.reply("Вы не являетесь модератором.");
+	    let role = message.mentions.roles.first();
+  if (!role) return message.channel.send(`You need to mention a role.`);
+  let member = message.mentions.members.first();
+  if (!member) return message.channel.send("You need to mention someone.");
+  let roleid = role.id;
+  let rolename = role.name;
+  
+  if (!message.guild.roles.get(roleid)) return message.channel.send(`Роль не найдена..`);
+  member.addRole(role.id);
+  let em = new discord.RichEmbed()
+  .setTitle("Addrole")
+  .setDescription(`Роль ${rolename} успешно добавлена к пользователю ${member.user.username}.`)
+  .setTimestamp()
+  message.channel.send({embed: em})
+  if (member.displayName) {
+    em.setDescription(`Роль ${rolename} успешно добавлена к пользователю ${member.displayName}.`)
     } else if(['tts'].includes(command)) {
 	    if(!message.member.hasPermission('KICK_MEMBERS')) return message.reply("Вы не являетесь модератором.");
 	    const ttsmessage = args.join(" ")
