@@ -689,12 +689,13 @@ async function googleCommand(msg, args) {
         message.channel.send({embed});
         message.delete().catch(O_o => {});
     } else if (['about'].includes(command)) {
-  var hrs = Math.round(client.uptime / (1000 * 60 * 60)) + " час(ов),"
-  var mins = " " + Math.round(client.uptime / (1000 * 60)) % 60 + " минут, "
-  var sec = Math.round(client.uptime / 1000) % 60 + " секунд"
-  if (hrs == "0 час(ов),") hrs = ""
-  if (mins == " 0 минут, ") mins = ""
- let uptime = hrs + mins + sec
+  var hrs = Math.round(client.uptime / (1000 * 60 * 60)) + " hour(s),"
+  var mins = " " + Math.round(client.uptime / (1000 * 60)) % 60 + " minute(s), "
+  var sec = Math.round(client.uptime / 1000) % 60 + " second(s)"
+  if (hrs == "0 hour(s),") hrs = ""
+  if (mins == " 0 minute(s), ") mins = ""
+  let uptime = hrs+mins+sec
+  
         let users = 0;
 client.guilds.forEach((guild) => {users += client.users.size});
         const embed = new Discord.RichEmbed()
