@@ -815,7 +815,7 @@ if (!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("*
         message.delete();
 	    const invi = '0';
     } else if(['si', 'serverinfo'].includes(command)) {
-        message.channel.guild.fetchInvites().then(invites => invi === invites.size));
+        message.channel.guild.fetchInvites().then(invites => invi === invites.size);
         if (message.channel.guild.large == true) {
             large = "Да"
         }
