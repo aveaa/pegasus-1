@@ -793,10 +793,10 @@ if (!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("*
 	  
     } else if (['createEmoji'].includes(command)) {
 	    if(!message.member.hasPermission("MANAGE_EMOJIS")) return message.reply("у вас нету нужных прав");
-	    const url = args[0];
-	    const name = args[1];
-	    message.channel.guild.createEmoji(url, name);
-	    message.reply(`эмодзи :${name} успешно создано.`);
+	    const url = (args[0])
+	    const name = (args[1])
+	    message.channel.guild.createEmoji(url, name)
+	    message.reply(`эмодзи :${name}: успешно создано.`);
     } else if (['vote'].includes(command) && message.channel.guild.id === "422775194281705493") {
         const embed = new Discord
             .RichEmbed().setColor("0000ff")
