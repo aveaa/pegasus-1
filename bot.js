@@ -813,8 +813,9 @@ if (!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("*
         }).catch(console.error);
         message.channel.send(`**Голосование пользователя ${message.author} успешно начато**`);
         message.delete();
+	    const invi = '0';
     } else if(['si', 'serverinfo'].includes(command)) {
-        
+        message.channel.guild.fetchInvites().then(invites => invi === invites.size));
         if (message.channel.guild.large == true) {
             large = "Да"
         }
@@ -849,6 +850,7 @@ message.guild.channels.filter(chan => chan.type === 'voice').forEach((channel) =
                 embed.addField('>Количество ролей<', message.channel.guild.roles.size, true)
                 embed.addField('>Количество эмодзи<', message.channel.guild.emojis.size, false)
                 embed.addField('>Количество каналов<', message.channel.guild.channels.size, true)
+	        embed.addField('>Количество приглашений<', invi)
                 embed.addField('>Сервер большой?<', large, false)
                 embed.addField('>Системный канал<', message.channel.guild.systemChannel !== null ? message.channel.guild.systemChannel : 'Нету.', true)
                 embed.addField('>ID Системного канала<', message.channel.guild.systemChannelID !== null ? message.channel.guild.systemChannelID : 'Нету.', false)
