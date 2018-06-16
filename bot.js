@@ -171,13 +171,13 @@ client.on('message', async (message) => {
   let role = message.mentions.roles.first();
   if (!role) return message.channel.send(`You need to mention a role.`);
   let member = message.mentions.members.first();
-  if (!member) return message.channel.send("You need to mention someone.");
+  if (!member) return message.channel.send("Нужны упоминания.");
   let roleid = role.id;
   let rolename = role.name;
   
   if (!message.guild.roles.get(roleid)) return message.channel.send(`Роль не найдена..`);
   member.addRole(role.id);
-  let em = new discord.RichEmbed()
+  let em = new Discord.RichEmbed()
   .setTitle("Addrole")
   .setDescription(`Роль ${rolename} успешно добавлена к пользователю ${member.user.username}.`)
   .setTimestamp()
