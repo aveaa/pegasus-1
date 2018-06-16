@@ -118,6 +118,18 @@ client.on('message', async (message) => {
         });
     }
 }
+	
+	client.on('guildMemberAdd', member => {
+  const welcome = member.guild.systemChannel;
+  if (!welcome) return;
+  const embed = new Discord.RichEmbed()
+  .setTitle("Welcome")
+  .setDescription(`Добро пожаловать ${member}, ты попал на сервер ${member.guild.name} \nСейчас на сервере ${member.guild.memberCount} пользователей.`)
+  .setFooter(member.guild.name)
+  .setColor("#00ff00")
+  .setTimestamp();
+  welcome.send({embed});
+});
     
     if (message.author.bot) return;
     //Отвечает за установку префикса в команды
