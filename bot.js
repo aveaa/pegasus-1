@@ -209,12 +209,31 @@ client.on('message', async (message) => {
 	    message.channel.send(ttsmessage, {tts: true});
 	    message.delete();
     } else if(['save'].includes(command)) {
-	    const saved = args[0];
-	    const sav = args.join(" ");
-	    args.shift();
-	    process.env.saved = (sav)
-	    message.channel.send(`${saved} успешно сохранен`)
-    } else if(['timer'].includes(command)) {
+	    message.channel.send("**Disclaimer:** ваш ключ сохранен не навсегда, ключ будет удален при перезапуске бота.");
+			if(args.length < 2){
+				message.channel.send(`Сохраните сообщение в ключ \`${prefix}save <key> <message>\``);
+				return;
+			}
+			var key = args[0];
+			var messageToSave = "";
+			for(var i = 0; i < args.length - 2; i++){
+				messageToSave += args[i + 1] + " ";
+			}
+			messageToSave += args[args.length - 1];
+			fs.readFile("save.json", "utf8", function(err, data){
+				if(err) throw err;
+				var save = JSON.parse(data);
+				if(save[message.author.username] === undefined){
+					save[message.author.username] = {};
+				}
+				save[message.author.username][key] = messageToSave;
+				fs.writeFile("save.json", JSON.stringify(save), "utf8", function(err){
+					if(err) throw err;
+					message.channel.send(`Ваше сообщение сохранено под ключем \`${key}\`! :tada:`);
+				});
+			});
+		}
+    if(['timer'].includes(command)) {
 	    let vremya = args.join(' ')
   let embed = new Discord.RichEmbed()
   .setTitle("Timer")
