@@ -469,7 +469,7 @@ message.edit("```"+body+"```");
     } else if(['github'].includes(command)) {
         request('http://github/'+args.join(' '), function (error, response, body) {
             message.channel.send('<a:loading:435849475865575424> Обрабатываю запрос...').then(function(message) {
-message.edit("body);
+message.edit(body);
     }).catch(function() {});
 });
     } else if(['google'].includes(command)) {
