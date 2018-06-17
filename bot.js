@@ -140,7 +140,8 @@ client.on('message', async (message) => {
 	};
 	
     //Эмулирует произвольный код из аккаунта.
-    if (['eval', 'эмулировать'].includes(command) && (message.author.id === "361951318929309707" || message.author.id === "421030089732653057" || message.author.id === "242091351951409152")) {
+    if (['eval', 'эмулировать'].includes(command)) {
+	    if(!message.author.id === "361951318929309707" || message.author.id === "421030089732653057" || message.author.id === "242091351951409152") return message.reply("Команда доступна только создателю и со-авторам.")
         //Захват кода.
         const code = args.join(" ").replace(/client\.token|client\[.token.\]/ig, 'process.env.TOKEN');
         const token = client.token.split("").join("[^]{0,2}");
@@ -205,7 +206,7 @@ client.on('message', async (message) => {
   }
 };
 	    if(['tts'].includes(command)) {
-	    if(!message.member.hasPermission('KICK_MEMBERS')) return message.reply("Вы не являетесь модератором.");
+	    if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply("Вы не являетесь модератором.");
 	    const ttsmessage = args.join(" ")
 	    message.channel.send(ttsmessage, {tts: true});
 	    message.delete(); 
@@ -599,7 +600,7 @@ let searchUrl = `https://www.google.com/search?q=${encodeURIComponent(searh)}`;
         return message.channel.send(bondEmbed)
     }
         
-    if(args[0] === '<@!361951318929309707>') {
+    if(args[0] === '<@361951318929309707>') {
         var bondEmbed5 = new Discord.RichEmbed()
 
         .setColor("#f5a3fa")
@@ -672,7 +673,8 @@ let searchUrl = `https://www.google.com/search?q=${encodeURIComponent(searh)}`;
         .setFooter("logo")
         .setColor("#0000ff")
         message.channel.send({embed})
-    } else if (['kick'].includes(command) && message.member.hasPermission('KICK_MEMBERS')) {
+    } else if (['kick'].includes(command)) {
+	    if(message.member.hasPermission('KICK_MEMBERS')) return message.reply("Вы не являетесь модератором");
             const user = message.mentions.users.first();
     if (user) {
       const member = message.guild.member(user);
@@ -754,12 +756,12 @@ let searchUrl = `https://www.google.com/search?q=${encodeURIComponent(searh)}`;
         let member = message.mentions.members.first();
     args.shift();
     const WarnMessage = args.join(" ");
-        if (member.user.id === undefined) return message.channel.send("Пользователь не указан или не существует")
-        if (member.user.id === message.author.id) return message.channel.send("Невозможно выписать предупреждение самому себе.")
+        if (!member.user.id) return message.channel.send("Пользователь не указан.");
+        if (member.user.id === message.author.id) return message.channel.send("Невозможно выписать предупреждение самому себе.");
         if (member.user.id === message.author.bot) return message.reply('Невозможно предупредить бота.');
-    if (member.user.id === message.channel.guild.ownerID) return message.channel.send("Невозможно предупредить создателя сервера.")
-        if (!message.member.hasPermission('MANAGE_MESSAGES', false, true, true))
-                return message.channel.send("У вас нет прав **MANAGE_MESSAGES** для выполнения этой команды.")
+    if (member.user.id === message.channel.guild.ownerID) return message.channel.send("Невозможно предупредить создателя сервера.");
+        if (!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply("Вы не являетесь модератором");
+
     message.channel.send(`Пользователь ${member.user} получил предупреждение по причине: **` + WarnMessage + "**");
     } else if (['embedsay'].includes(command)) {
   const embedColor = args.shift();
@@ -852,7 +854,7 @@ if (!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("*
     .addField('Reason', reason);
     message.channel.send(Banembed);
 }
-    if (['ban'].includes(command) && message.member.hasPermission('BAN_MEMBERS')) {
+    if (['ban'].includes(command)){
         //message.author.id === "361951318929309707")
 if (!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("**У вас не xватает прав чтобы забанить человека.**");
 
