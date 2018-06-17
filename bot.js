@@ -218,12 +218,10 @@ client.on('message', async (message) => {
 
   let embed = new Discord.RichEmbed()
   .setTitle(invite.guild.name)
-  .addField("Количество приглашенных", invite.uses)
+  .addField("Количество людей", invite.memberCount)
   .addField("Инвайтер", invite.inviter)
   .addField("Канал приглашения", invite.channel)
-  .addField("Максимальное количество использований", invite.maxUses)
-  .addField("Время создания", `${Math.round(invite.createdTimestamp / (1000 * 60 * 60 * 24))} дней, ${Math.round(invite.createdTimestamp / (1000 * 60 * 60))} часов, ${Math.round(invite.createdTimestamp / (1000 * 60)) % 60} минут, ${Math.round(invite.createdTimestamp / 1000) % 60} секунд назад.`)
-
+  .setColor("36393E")
   .setThumbnail(`https://cdn.discordapp.com/icons/${invite.guild.id}/${invite.guild.icon}.png`)
 
   message.channel.send(embed);
