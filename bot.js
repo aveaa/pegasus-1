@@ -208,6 +208,12 @@ client.on('message', async (message) => {
 	    const ttsmessage = args.join(" ")
 	    message.channel.send(ttsmessage, {tts: true});
 	    message.delete();
+    } else if(['save'].includes(command)) {
+	    const saved = args[0];
+	    const sav = args.join(" ");
+	    args.shift();
+	    process.env.saved = (sav)
+	    message.channel.send(`${saved} успешно сохранен`)
     } else if(['timer'].includes(command)) {
 	    let vremya = args.join(' ')
   let embed = new Discord.RichEmbed()
