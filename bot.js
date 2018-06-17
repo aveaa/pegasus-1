@@ -233,8 +233,7 @@ client.on('message', async (message) => {
 					message.channel.send(`Ваше сообщение сохранено под ключем \`${key}\`! :tada:`);
 				});
 			});
-		}
-	 if(['view'].includes(command)) {
+		} else if(['view'].includes(command)) {
 			fs.readFile("save.json", "utf8", function(err, data){
 				if(err) throw err;
 				var save = JSON.parse(data);
@@ -255,8 +254,8 @@ client.on('message', async (message) => {
 						savedMessages += messageKeys[i] + ", ";
 					}
 					savedMessages += messageKeys[messageKeys.length - 1];
-					message.reply(`Вот ваши ключи: **`+savedMessages+`**`)
-				} else
+					message.reply("Вот ваши ключи: **" + savedMessages + "**")
+				} else{
 					var key = args[0];
 					var recalledMessage;
 					try{
@@ -268,7 +267,7 @@ client.on('message', async (message) => {
 					message.channel.send(`${key}: ${recalledMessage}`);
 				}
 			});
-		 }
+		}
         if(['timer'].includes(command)) {
 	    let vremya = args.join(' ')
   let embed = new Discord.RichEmbed()
