@@ -473,21 +473,22 @@ message.edit(body);
     }).catch(function() {});
 });
     } else if(['google'].includes(command)) {
-	    let searh = args.join(" ")
-	    searh = searh.replaceAll('порно', 'котята')
+	  /*  let searh = args.join(" ")
+	    searh = searh.replaceAll('порно', 'котята')*/
+	    message.content = message.content.replaceAll('порно', 'котята')
 	    if(message.channel.guild.id === '417266233562365952') return message.reply("отключено для данного сервера");
-let searchUrl = `https://www.google.com/search?q=${encodeURIComponent}${searh}`;
-  message.channel.send(`Ищу в google ${searh}...`)
+let searchUrl = `https://www.google.com/search?q=${encodeURIComponent(args.join(' '))}`;
+  message.channel.send(`Ищу в google ${args.join(" ")}...`)
   return snekfetch.get(searchUrl).then((result) => {
 
     let $ = cheerio.load(result.text);
     let googleData = $('.r').first().find('a').first().attr('href');
 
     googleData = querystring.parse(googleData.replace('/url?', ''));
-    message.channel.send(`Найден результат по запросу ${searh}:\n${googleData.q}`)
+    message.channel.send(`Найден результат по запросу ${args.join(" ")}:\n${googleData.q}`)
 
   }).catch((err) => {
-    message.channel.send(`По запросу ${searh} ничего не найдено...`)
+    message.channel.send(`По запросу ${args.join(" ")} ничего не найдено...`)
   });
              
 } else if(['pin'].includes(command) && message.member.hasPermission('MANAGE_MESSAGES')) {
