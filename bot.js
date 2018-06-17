@@ -382,43 +382,21 @@ message.edit("```"+body+"```");
 });
     } else if(['google'].includes(command)) {
 
-	    const searhing = args.join(" ");
-	    for(let x = 0, sym=''; sym = text.charAt(x); x++) {
-            if (sym !== undefined)
-                switch (sym.toLowerCase()) {
-                        case 'порно':
-                        searhing += '.';
-                        break;
-			case 'секс':
-                        searhing += '.';
-                        break;
-			case 'хуй':
-                        searhing += '.';
-                        break;
-			case 'член':
-                        searhing += '.';
-                        break;
-			case 'порно':
-                        searhing += '.';
-                        break;
-			default:
-                        new_text += sym;
-                
+	    
 let searchUrl = `https://www.google.com/search?q=${encodeURIComponent(args.join(' '))}`;
-  message.channel.send(`Ищу в google ${args.join(' ')}...`).then(m => m.delete(2500))
+  message.channel.send(`Ищу в google ${args.join(' ')}...`)
   return snekfetch.get(searchUrl).then((result) => {
 
-    // Cheerio lets us parse the HTML on our google result to grab the URL.
     let $ = cheerio.load(result.text);
     let googleData = $('.r').first().find('a').first().attr('href');
 
     googleData = querystring.parse(googleData.replace('/url?', ''));
-    message.channel.send(`Найден результат по запросу ${args.join(' ')}:\n${googleData.q}`)
+    message.edit(`Найден результат по запросу ${args.join(' ')}:\n${googleData.q}`)
 
   }).catch((err) => {
-    message.channel.send(`По запросу ${args.join(' ')} ничего не найдено...`)
+    message.edit(`По запросу ${args.join(' ')} ничего не найдено...`)
   });
-                }
+             
 } else if(['pin'].includes(command) && message.member.hasPermission('MANAGE_MESSAGES')) {
         let kanal = (args[0])
         let sms = (args[1])
