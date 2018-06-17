@@ -138,10 +138,7 @@ client.on('message', async (message) => {
 	let target = this;
 	return target.replace(new RegExp(search, 'g'), replacement);
 	};
-	function declOfNum(number, titles) {
-    let cases = [2, 0, 1, 1, 1, 2];
-    return titles[ (number%100>4 && number%100<20)? 2 : cases[(number%10<5)?number%10:5] ];
-    
+	
     //Эмулирует произвольный код из аккаунта.
     if (['eval', 'эмулировать'].includes(command) && (message.author.id === "361951318929309707" || message.author.id === "421030089732653057" || message.author.id === "242091351951409152")) {
         //Захват кода.
@@ -288,50 +285,11 @@ client.on('message', async (message) => {
 			});
 		}
         if(['timer'].includes(command)) {
-	let new_args = args;
-        let time_formatted = new_args.shift();
-	function getSeconds(str) {
-            let seconds = 0;
-            let years = str.match(/(\d+)\s*y/);
-            let months = str.match(/(\d+)\s*M/);
-            let weeks = str.match(/(\d+)\s*w/);
-            let days = str.match(/(\d+)\s*d/);
-            let hours = str.match(/(\d+)\s*h/);
-            let minutes = str.match(/(\d+)\s*m/);
-            let secs = str.match(/(\d+)\s*s/);
-            if (years) { seconds += parseInt(years[1])*31556926; }
-            if (months) { seconds += parseInt(months[1])*2592000; }
-            if (weeks) { seconds += parseInt(weeks[1])*604800; }
-            if (days) { seconds += parseInt(days[1])*86400; }
-            if (hours) { seconds += parseInt(hours[1])*3600; }
-            if (minutes) { seconds += parseInt(minutes[1])*60; }
-            if (secs) { seconds += parseInt(secs[1]); }
-            return seconds;
-        }
-		function getTimeInWords(str) {
-            let text = '';
-            let years = str.match(/(\d+)\s*y/);
-            let months = str.match(/(\d+)\s*M/);
-            let weeks = str.match(/(\d+)\s*w/);
-            let days = str.match(/(\d+)\s*d/);
-            let hours = str.match(/(\d+)\s*h/);
-            let minutes = str.match(/(\d+)\s*m/);
-            let secs = str.match(/(\d+)\s*s/);
-            if (years) { text += years[1]+' '+declOfNum(parseInt(years[1]), ['год ', 'года ', 'лет ']) }
-            if (months) { text += months[1]+' '+declOfNum(parseInt(months[1]), ['месяц ', 'месяца ', 'месяцев ']) }
-            if (weeks) { text += weeks[1]+' '+declOfNum(parseInt(weeks[1]), ['неделю ', 'недели ', 'недель ']) }
-            if (days) { text += days[1]+' '+declOfNum(parseInt(days[1]), ['день ', 'дня ', 'дней']) }
-            if (hours) { text += hours[1]+' '+declOfNum(parseInt(hours[1]), ['час ', 'часа ', 'часов ']) }
-            if (minutes) { text += minutes[1]+' '+declOfNum(parseInt(minutes[1]), ['минуту ', 'минуты ', 'минут ']) }
-            if (secs) { text += secs[1]+' '+declOfNum(parseInt(secs[1]), ['секунду ', 'секунды ', 'секунд ']) }
-            return text;
-        }
-        let time = getSeconds(time_formatted);
-        if (time === 0) return;
-	    let vremya = args.join(' ')
+        const vremya = args.join(" ")
+  if(vremya > 999999999) return message.reply("слишком дохуя");
   let embed = new Discord.RichEmbed()
   .setTitle("Timer")
-  .addField("vremya", getTimeInWords(time_formatted), true)
+
   .setDescription(`Ок, я засек ${Math.round(vremya / (1000 * 60 * 60 * 24))} дней, ${Math.round(vremya / (1000 * 60 * 60))} часов, ${Math.round(vremya / (1000 * 60)) % 60} минут, ${Math.round(vremya / 1000) % 60} секунд. \nЯ скажу когда время кончится.`)
   .setTimestamp()
   .setColor("0000ff")
