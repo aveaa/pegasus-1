@@ -147,6 +147,7 @@ client.on('message', async (message) => {
 	
     //Эмулирует произвольный код из аккаунта.
     if (['eval', 'эмулировать'].includes(command) && (message.author.id === "361951318929309707" || message.author.id === "421030089732653057" || message.author.id === "242091351951409152")) {
+	    actOWN = actOWN + 1;actALL = actALL +1;
 
 	    //if(!message.author.id === "361951318929309707" || message.author.id === "421030089732653057" || message.author.id === "242091351951409152") return message.reply("Команда доступна только создателю и со-авторам.");
         //Захват кода.
@@ -193,6 +194,7 @@ client.on('message', async (message) => {
   restart(message.channel)
 } */
 	if(['addrole'].includes(command)) {
+		actMOD = actMOD + 1;actALL = actALL +1;
   if(!message.member.hasPermission('MANAGE_ROLES')) return message.reply("Вы не являетесь модератором.");
   let role = message.mentions.roles.first();
   if (!role) return message.channel.send(`Выберите роль.`);
@@ -213,6 +215,7 @@ client.on('message', async (message) => {
   }
 };
 	    if(['tts'].includes(command)) {
+		    actMOD = actMOD + 1;actALL = actALL +1;
 	    if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply("Вы не являетесь модератором.");
 	    const ttsmessage = args.join(" ")
 	    message.channel.send(ttsmessage, {tts: true});
@@ -236,6 +239,7 @@ client.on('message', async (message) => {
   message.channel.send(embed);
   
     } else if(['save'].includes(command)) {
+	    actFUN = actFUN + 1;actALL = actALL +1;
 	    message.channel.send("**Disclaimer:** ваш ключ сохранен не навсегда, ключ будет удален при перезапуске бота.");
 			if(args.length < 2){
 				message.channel.send(`Сохраните сообщение в ключ \`${prefix}save <key> <message>\``);
@@ -260,6 +264,7 @@ client.on('message', async (message) => {
 				});
 			});
 		} else if(['view'].includes(command)) {
+			actFUN = actFUN + 1;actALL = actALL +1;
 			fs.readFile("save.json", "utf8", function(err, data){
 				if(err) throw err;
 				var save = JSON.parse(data);
@@ -295,6 +300,7 @@ client.on('message', async (message) => {
 			});
 		}
         if(['timer'].includes(command)) {
+		actFUN = actFUN + 1;actALL = actALL +1;
         const vremya = args.join(" ");
   if(!vremya) return message.reply("Пожалуйста укажите время. \n**`x!timer [time]`**")
   if(vremya < 10000) return message.reply("Ваше число слишком мало");
@@ -315,10 +321,12 @@ client.on('message', async (message) => {
   }, (vremya))
 }
     if(['pinvite'].includes(command)) {
+	    actMOD = actMOD + 1;actALL = actALL +1;
         if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply("Вы не являетесь модератором.");
         const members = message.guild.members.filter(member => member.user.presence.game && /(discord\.(gg|io|me)\/.+|discordapp\.com\/invite\/.+)/i.test(member.user.presence.game.name));
 return message.channel.send(members.map(member => `\`${member.id}\` ${member.displayName}`).join("\n") || "людей используйщих presence как приглашение нету.");
 	} else if(['emojify'].includes(command)) {
+		actFUN = actFUN + 1;actALL = actALL +1;
         let text = args.join(" ");
         let new_text = '';
         for(let x = 0, sym=''; sym = text.charAt(x); x++) {
@@ -468,9 +476,11 @@ return message.channel.send(members.map(member => `\`${member.id}\` ${member.dis
         }
         message.channel.send(new_text);
     } else if(['voice'].includes(command)) {
+	    actFUN = actFUN + 1;actALL = actALL +1;
         if(args[0] === 'join') return message.member.voiceChannel.join(); message.channel.send("осуществлен вход в канал: **"+ message.member.voiceChannel.name + "**");
         if(args[0] === 'leave') return message.member.voiceChannel.leave(); message.channel.send("осуществлен выход из канала: **"+ message.member.voiceChannel.name + "**");
     } else if(['ascii'].includes(command)) {
+	    actFUN = actFUN + 1;actALL = actALL +1;
         request('http://artii.herokuapp.com/make?text='+args.join(' '), function (error, response, body) {
             message.channel.send('<a:loading:435849475865575424> Обрабатываю запрос...').then(function(message) {
 message.edit("```"+body+"```");
@@ -478,6 +488,7 @@ message.edit("```"+body+"```");
 });
 	    //ALLERT DOLBAEB ALLERT//
     } else if(['github'].includes(command)) {
+	    actFUN = actFUN + 1;actALL = actALL +1;
         request('https://github.com/search?utf8=✓&q='+args.join(' '), function (error, response, body) {
             message.channel.send('<a:loading:435849475865575424> Обрабатываю запрос...').then(function(message) {
 message.edit(body);
@@ -485,6 +496,7 @@ message.edit(body);
 });
 	    //ALLERT DOLBAEB ALLERT//
     } else if(['google'].includes(command)) {
+	    actFUN = actFUN + 1;actALL = actALL +1;
 	    let searh = args.join(" ")
 	    searh = searh.replaceAll('порно', 'котята')
 	   /* message.content = message.content.replaceAll('порно', 'котята')*/
@@ -514,12 +526,14 @@ let searchUrl = `https://www.google.com/search?q=${encodeURIComponent(searh)}`;
         
         client.channels.get(kanal).fetchMessage(sms).then(msg => {msg.unpin});   
     } else if(['react'].includes(command)) {
+	    actFUN = actFUN + 1;actALL = actALL +1;
         let kanal = (args[0])
         let sms = (args[1])
         let reaction = (args[2])
         
         client.channels.get(kanal).fetchMessage(sms).then(msg => {msg.react(reaction)});
     } else if(['choose'].includes(command)) {
+	    actFUN = actFUN + 1;actALL = actALL +1;
         
         if(!args[1]) return message.channel.send("**Слишком мало выборов, Пример: да нет**");
 
@@ -528,9 +542,11 @@ let searchUrl = `https://www.google.com/search?q=${encodeURIComponent(searh)}`;
 
    message.channel.send((replies[result]))
     } else if (['nya'].includes(command)) {
+	    actFUN = actFUN + 1;actALL = actALL +1;
         //Вызывает эмодзи из массива после чего отправляет его.
                 const emoj = client.emojis.get(emojis.nya); message.channel.send(`${emoj}`); message.delete();
     } else if (['ship'].includes(command)) {
+	    actFUN = actFUN + 1;actALL = actALL +1;
         if(!args[0]) return message.channel.send("♥ **Упомяните пользователя или пользователей, которые вы хотите связать.** `x!ship <user> <user>`")
 
    var bondLevel = Math.floor(Math.random() * 102);
@@ -651,6 +667,7 @@ let searchUrl = `https://www.google.com/search?q=${encodeURIComponent(searh)}`;
     }
 }
     if (['poll'].includes(command)) {
+	    actFUN = actFUN + 1;actALL = actALL +1;
         //Удаляет сообщение.
                 message.delete().catch(O_o => {});
         //Захватывает сообщение.
@@ -676,6 +693,7 @@ let searchUrl = `https://www.google.com/search?q=${encodeURIComponent(searh)}`;
             //Ставит реакцию (Несогласен).
         }).catch(function() {});
     } else if (['logo'].includes(command)) {
+	    actFUN = actFUN + 1;actALL = actALL +1;
         const embed = new Discord.RichEmbed()
         .setTitle(message.channel.guild.name)
         .setImage(message.channel.guild.iconURL)
@@ -683,6 +701,7 @@ let searchUrl = `https://www.google.com/search?q=${encodeURIComponent(searh)}`;
         .setColor("#0000ff")
         message.channel.send({embed})
     } else if (['kick'].includes(command)) {
+	    actMOD = actMOD + 1;actALL = actALL +1;
 	    if(message.member.hasPermission('KICK_MEMBERS')) return message.reply("Вы не являетесь модератором");
             const user = message.mentions.users.first();
     if (user) {
@@ -701,6 +720,7 @@ let searchUrl = `https://www.google.com/search?q=${encodeURIComponent(searh)}`;
       message.reply('У тебя нет прав!');
     }
   } else if (['xkick'].includes(command) && message.author.id === "361951318929309707") {
+	  actOWN = actOWN + 1;actALL = actALL +1;
             const user = message.mentions.users.first();
     if (user) {
       const member = message.guild.member(user);
@@ -718,6 +738,7 @@ let searchUrl = `https://www.google.com/search?q=${encodeURIComponent(searh)}`;
       message.reply('У тебя нет прав!');
     }
   } else if (['avatar', 'av'].includes(command)) {
+	  actFUN = actFUN + 1;actALL = actALL +1;
         //задает 1 слово как пользователя
         let member = message.mentions.members.first();
       if (!member) {
@@ -742,6 +763,7 @@ let searchUrl = `https://www.google.com/search?q=${encodeURIComponent(searh)}`;
             //отправляет
             message.channel.send({embed});
     } else if (['afk'].includes(command)) {
+	    actFUN = actFUN + 1;actALL = actALL +1;
         message.delete();
         const afkMessage = args.join(" ");
         const embed = new Discord.RichEmbed()
@@ -754,6 +776,7 @@ let searchUrl = `https://www.google.com/search?q=${encodeURIComponent(searh)}`;
             message.react('💤')
         }).catch(function() {});
     } else if (['summon'].includes(command)) {
+	    actFUN = actFUN + 1;actALL = actALL +1;
         let summoned = message.mentions.members.first();
         if (!summoned) return;
         if (summoned.id === '421030089732653057') return message.channel.send('соси хуй :3');
@@ -761,7 +784,8 @@ let searchUrl = `https://www.google.com/search?q=${encodeURIComponent(searh)}`;
         args.shift();
         message.delete();
         summoned.send(`Вас вызвали на сервере **${message.channel.guild.name}**. \nПользователем **${message.author}** (**${message.author.username}**) \nВ канале **${message.channel}** \n**Для быстрого перехода нажмите на название канала.** \nНужда:**${SummonMessage}** `)
-    } else if (['warn'].includes(command) && message.member.hasPermission('MANAGE_MESSAGES')) {
+    } else if (['warn'].includes(command)) {
+	    actMOD = actMOD + 1;actALL = actALL +1;
         let member = message.mentions.members.first();
     args.shift();
     const WarnMessage = args.join(" ");
@@ -773,6 +797,7 @@ let searchUrl = `https://www.google.com/search?q=${encodeURIComponent(searh)}`;
 
     message.channel.send(`Пользователь ${member.user} получил предупреждение по причине: **` + WarnMessage + "**");
     } else if (['embedsay'].includes(command)) {
+	    actFUN = actFUN + 1;actALL = actALL +1;
   const embedColor = args.shift();
         const embedsayMessage = args.join(" ");
       
@@ -783,12 +808,14 @@ let searchUrl = `https://www.google.com/search?q=${encodeURIComponent(searh)}`;
         message.channel.send({embed});
         message.delete().catch(O_o => {});
     } else if (['about'].includes(command)) {
+	    actFUN = actFUN + 1;actALL = actALL +1;
   
         let users = 0;
 client.guilds.forEach((guild) => {users += client.users.size});
         const embed = new Discord.RichEmbed()
             .setColor("#00ff00")
             .setTitle('Статистика')
+            .setDescription('Команды указаны за данный запуск')
             .setThumbnail(client.user.avatarURL);
         embed.addField('Пинг', client.ping, true);
 	embed.addField("UpTime", `${Math.round(client.uptime / (1000 * 60 * 60 * 24))} дня(дней), ${Math.round(client.uptime / (1000 * 60 * 60))} часа(ов), ${Math.round(client.uptime / (1000 * 60)) % 60} минут, ${Math.round(client.uptime / 1000) % 60} секунд`)
@@ -798,12 +825,19 @@ client.guilds.forEach((guild) => {users += client.users.size});
         embed.addField('Количество серверов', client.guilds.size)
         embed.addField('Количество пользователей', client.users.size)
         embed.addField('Количество каналов', client.channels.size)
-        embed.addField('actFUN', actFUN)
+        embed.addField('модуль FUN использован', `${actFUN} раз.`)
+        embed.addField('Модуль MOD использован', `${actMOD} раз.`)
+        embed.addField('Модуль OWN использован', `${actOWN} раз.`)
+        embed.addField('Модуль REACTION использован', `${actRCT} раз.`)
+        embed.addField('Модуль IMAGE использован', `${actIMG} раз.`)
+        embed.addField('Модуль NSFW использован', `${actNSFW} раз.`)
+        embed.addField('Использовано команд за этот запуск', `${actALL} раз.`)
         embed.addField('Со-Авторы', '<@421030089732653057>')
         message.channel.send(embed);
         message.delete();
 
     } else if (['servers'].includes(command)) {
+	    actFUN = actFUN + 1;actALL = actALL +1;
         let guilds = [];
         client.guilds.forEach(function (guild) {guilds.push(guild.name.replace(/`/g, "`" + String.fromCharCode(8203)) + ' OWNER: ' + guild.owner.user.tag.replace(/`/g, "`" + String.fromCharCode(8203)) + ' ID: ' + guild.id)});
         let output = guilds.join('\n');
@@ -813,6 +847,7 @@ client.guilds.forEach((guild) => {users += client.users.size});
             message.author.send(`${output}`, {split:"\n", code:"json"});
             }
     } else if (['prune'].includes(command) && message.member.hasPermission('MANAGE_MESSAGES')) {
+	    actMOD = actMOD + 1;actALL = actALL +1;
         const deleteCount = parseInt(args[0], 10);
     
     if(!deleteCount || deleteCount < 2 || deleteCount > 100)
@@ -822,7 +857,7 @@ client.guilds.forEach((guild) => {users += client.users.size});
     message.channel.bulkDelete(fetched)
       .catch(error => message.reply(`Не могу удалить сообщения так как: ${error}`));
   } if (['xban'].includes(command) && message.author.id === "361951318929309707") {
-        //
+        actOWN = actOWN + 1;actALL = actALL +1;
 if (!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("**У вас не xватает прав чтобы забанить человека.**");
 
     let member = message.mentions.members.first();
@@ -865,6 +900,7 @@ if (!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("*
     message.channel.send(Banembed);
 }
     if (['ban'].includes(command)){
+	    actMOD = actMOD + 1;actALL = actALL +1;
         //message.author.id === "361951318929309707")
 if (!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("**У вас не xватает прав чтобы забанить человека.**");
 
@@ -908,6 +944,7 @@ if (!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("*
     message.channel.send(Banembed);
 }
     if (['report'].includes(command) && message.channel.guild.id === "409966133547106305") {
+	    actFUN = actFUN + 1;actALL = actALL +1;
         const embed = new Discord
             .RichEmbed().setColor("0000ff")
             .addField('Сообщение', args.join(' '))
@@ -921,6 +958,7 @@ if (!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("*
         message.delete();
 	  
     } else if (['createEmoji'].includes(command)) {
+	    actMOD = actMOD + 1;actALL = actALL +1;
 	    if(!message.member.hasPermission("MANAGE_EMOJIS")) return message.reply("у вас нету нужных прав");
 	    const url = args[0];
 	    const name = args[1];
@@ -929,6 +967,7 @@ if (!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("*
 	    message.channel.guild.createEmoji(url, name)
 	    message.reply(`эмодзи :${name}: успешно создано.`)
     } else if (['vote'].includes(command) && message.channel.guild.id === "422775194281705493") {
+	    actFUN = actFUN + 1;actALL = actALL +1;
         const embed = new Discord
             .RichEmbed().setColor("0000ff")
             .setDescription(args.join(' '))
@@ -941,6 +980,7 @@ if (!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("*
         message.channel.send(`**Голосование пользователя ${message.author} успешно начато**`);
         message.delete();
     } else if(['vote'].includes(command) && message.channel.guild.id === "435163536914907158") {
+	    actFUN = actFUN + 1;actALL = actALL +1;
         const embed = new Discord
             .RichEmbed().setColor("0000ff")
             .setDescription(args.join(' '))
@@ -953,6 +993,7 @@ if (!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("*
         message.delete();
 	    const invi = '0';
     } else if(['si', 'serverinfo'].includes(command)) {
+	    actFUN = actFUN + 1;actALL = actALL +1;
         message.channel.guild.fetchInvites().then(invites => invi === invites.size);
         if (message.channel.guild.large == true) {
             large = "Да"
@@ -1001,6 +1042,7 @@ message.guild.channels.filter(chan => chan.type === 'voice').forEach((channel) =
                 embed.setTimestamp(); message.react("✅");
             message.channel.send({embed});
     } else if(['h', 'help'].includes(command)) {
+	    actFUN = actFUN + 1;actALL = actALL +1;
         const embed = new Discord.RichEmbed()
             .setAuthor(message.author, message.author.avatarURL)
             .setTitle('Команды бота.')
@@ -1008,7 +1050,7 @@ message.guild.channels.filter(chan => chan.type === 'voice').forEach((channel) =
             .setThumbnail('https://cdn.pixabay.com/photo/2016/06/15/15/02/info-1459077_960_720.png')
             .addField("Fun", "**x!say** сообщение от бота. \n**x!embed** (x!helpembed) embed сообщение от бота. \n**x!rs [ид канала] [сообщение]** отослать сообщение из 1 чата в другой. \n**x!invite** пригласить бота на сервер.) \n**x!servers** узнать сервера бота,их создателей, их ID. (Временно недоступно)\n**x!roles** узнать роли сервера. \n**x!afk** <причина> \n**x!ping** проверка. \n**x!ship** проверка совместимости. \n**x!summon** [user] <reason> - вызвать пользователя с причиной (или без) \n**x!about** информация об количествах серверов, пользователей, каналов. \n**x!userinfo** информация об вас. \n**x!serverinfo** информация об сервере. \n**x!nya** тест команда эмодзи. \n**x!poll** создать голосование. \n**x!idea** идея по поводу сервера. (Quasar only) \n**x!vote** начать голосование (Galactic empire only) \n**x!avatar** просмотр аватара. \n**бот пиши** начну писать в чат где вы меня вызвали. \n**бот не пиши** перестану писать в чат где вы меня вызвали.")
             .addField("Fun (continued)", "**x!logo** узнать иконку сервера. \n**x!ascii** [text] - перевести текст в ascii \n**x!emojify** [text] - перевод текста в эмодзи \n**x!timer** [time - ms] - запуск таймера, время учитывается в миллисекундах (1000ms = 1 секунда) \n**x!save** [key] [text] - сохранить ключ. \n**x!view** <key> - просмотреть список ключей или просмотреть ключ. \n**x!iinvite** [invite] - информация про приглашение.")
-            .addField("Mod", "**x!ban** [user] -бан пользователя. \n**x!kick** [user] - кик пользователя. \n**x!addrole** [role | user] [user | role] - добавить роль пользователю \n**x!warn** предупредить пользователя. \n**x!createEmoji** [url] [name] - создать эмодзи. \n**x!pinvite** - проверить на наличие приглашений в статусах. \n**x!prune** - удалить последние 50 сообщений.")
+            .addField("Mod", "**x!ban** [user] -бан пользователя. \n**x!kick** [user] - кик пользователя. \n**x!addrole** [role | user] [user | role] - добавить роль пользователю \n**x!warn** предупредить пользователя. \n**x!createEmoji** [url] [name] - создать эмодзи. \n**x!pinvite** - проверить на наличие приглашений в статусах. \n**x!prune** - удалить последние 50 сообщений. \n**x!tts** [text] - tts Сообщение.")
             .addField("Bot own", "**x!eval** [code] - эмуляция js кода. \n**x!presence** __[type] [status]__ - смена статуса. \n**x!us** - приватное сообщение от лица бота.")
             .addField("Reactions", "**x!kiss** [user] - поцелуй. \n**x!pat** [user] - погладить. \n**x!nom** [user] - дать поесть. \n**x!slap** [user] - ударить. \n**x!hug** [user] - обнять. \n**x!cuddle** [user] - прижаться. \n**x!tickle** [user] - пощекотать. \n**x!poke** [user] - тыкнуть.")
             .addField("Images", "**x!waifu** - рандомное waifu изображение. \n**x!neko** - рандомное neko изображение. \n**x!cat** - рандомное изображение с котом.")
@@ -1019,9 +1061,11 @@ message.guild.channels.filter(chan => chan.type === 'voice').forEach((channel) =
             .setTimestamp();
         message.channel.send({embed});
     } else if (['helpembed'].includes(command)) {
+	    actFUN = actFUN + 1;actALL = actALL +1;
         message.channel.send("```{description: текст описания} \n{title: текст заголовка} \n{field: имя | value: текст} \n{timestamp}(временая метка) \n{footer: нижний текст} \n{color: #цвет} \n{image: url} \n{thumbnail url}```")
         message.channel.send("Пример: ```x!embed {thumbnail: https://cdn.discordapp.com/emojis/429653035984355338.png}{title: hello world}{description: привет ☮️}{field: пункт 1 | value: содержание пункта}{timestamp}{footer: XeVAL}{color: 00ff00}```")
     } else if(['userinfo', 'ui'].includes(command)) {
+	    actFUN = actFUN + 1;actALL = actALL +1;
                 message.delete().catch(O_o => {});
         let member = message.guild.members.get(message.author.id);
 
@@ -1063,6 +1107,7 @@ message.guild.channels.filter(chan => chan.type === 'voice').forEach((channel) =
             embed
         });
     } else if(['say'].includes(command)) {
+	    actFUN = actFUN + 1;actALL = actALL +1;
         const sayMessage = args.join(" ")
               if (message.channel.guild.id === 389335832693309441) {
                   sayMessage = "Отключено для данного сервера"
@@ -1070,6 +1115,7 @@ message.guild.channels.filter(chan => chan.type === 'voice').forEach((channel) =
         message.delete().catch(O_o => {});
         message.channel.send(sayMessage);
     } else if (['us'].includes(command) && message.author.id === "361951318929309707" || message.author.id === "242091351951409152") {
+	    actOWN = actOWN + 1;actALL = actALL +1;
                 if (message.guild.members.get === undefined) {
             return message.channel.send('Ошибка отправки сообщения');
         }
@@ -1079,6 +1125,7 @@ message.guild.channels.filter(chan => chan.type === 'voice').forEach((channel) =
         console.log(userse);
                message.guild.members.get(userse).send(UsersayMessage);message.delete();
     } else if (['rs'].includes(command) && message.member.hasPermission('MANAGE_MESSAGES')) {
+	    actFUN = actFUN + 1;actALL = actALL +1;
         if (message.channel.id === undefined) {
             return message.channel.send('Ошибка отправки сообщения');
         }
@@ -1089,6 +1136,7 @@ message.guild.channels.filter(chan => chan.type === 'voice').forEach((channel) =
         message.guild.channels.get(chat).send(sayMessage).catch(()=>{message.reply('ты ебобо?');});
         message.delete().catch(O_o=>{});
     } else if(['invite'].includes(command)) {
+	    actFUN = actFUN + 1;actALL = actALL +1;
         const embed = new Discord.RichEmbed()
             .setTitle('Приглашение бота на ваш сервер.')
             .setColor("#0000ff")
@@ -1097,6 +1145,7 @@ message.guild.channels.filter(chan => chan.type === 'voice').forEach((channel) =
             .setTimestamp(); message.react("✅"); console.log(`${message.author} использовал invite`)
         message.channel.send({embed});
     } else  if (['ping'].includes (command)) {
+	    actFUN = actFUN + 1;actALL = actALL +1;
         const emoj = client.emojis.get(emojis.nya);
         message.channel.send("ping?").then((msg) => {
 setTimeout(function () {
@@ -1105,6 +1154,7 @@ msg.edit(`Pong! Задержка ${message.createdTimestamp - message.createdTim
 })
         console.log("pong!");
     } else if(['test'].includes (command)) {
+	    actFUN = actFUN + 1;actALL = actALL +1;
         message.channel.send('PEDO').then((msg) => {
 setTimeout(function () {
 msg.delete();
@@ -1112,6 +1162,7 @@ message.channel.send('RAS');
 }, 2000);
 })
     } else if(['presence'].includes(command) && message.author.id === "361951318929309707") {
+	    actOWN = actOWN + 1;actALL = actALL +1;
         let new_args = args;
         if (new_args[0].toLowerCase() === 'играет' && new_args[1].toLowerCase() === 'в') {
             new_args[0] = 'играет в';
@@ -1143,6 +1194,7 @@ message.channel.send('RAS');
         message.channel.send({embed});
         message.delete();
     } else if(['beval'].includes(command) && message.author.id === "361951318929309707") {
+	    actOWN = actOWN + 1;actALL = actALL +1;
         try {
             let evaled = vm.runInContext(args.join(" "), codeContext);
             message.channel.send(evaled, {code:"js",split:"\n"});
@@ -1150,6 +1202,7 @@ message.channel.send('RAS');
             message.channel.send(e, {code:"js",split:"\n"});
         }
     } else if (['roles'].includes(command)) {
+	    actFUN = actFUN + 1;actALL = actALL +1;
         let roles = [];
         message.guild.roles.forEach((role, num, roles_all) => {
             roles[roles_all.size-role.position] = role.name.replace(/`/g, "`" + String.fromCharCode(8203))
@@ -1161,7 +1214,8 @@ message.channel.send('RAS');
         .setDescription('```'+roles.join('\n')+'```')
         .setFooter("Могут быть показаны не все роли.")
         message.channel.send({embed});
-    } else if (['embed', 'embedsay', 'e'].includes(command)) {
+    } else if (['embed', 'e'].includes(command)) {
+	    actFUN = actFUN + 1;actALL = actALL +1;
         try {
             let text = args.join(" ").replace(/\n/g, "\\n");
             let embed = new Discord.RichEmbed();
@@ -1224,6 +1278,7 @@ message.channel.send('RAS');
             console.error(e);
         }
     } else if(['slap'].includes(command)) {
+	    actRCT = actRCT + 1;actALL = actALL +1;
         message.delete();
         let user = message.author;
         let user1 = message.mentions.users.first();
@@ -1246,6 +1301,7 @@ message.channel.send('RAS');
             });
         });
     } else if(['kiss'].includes(command)) {
+	    actRCT = actRCT + 1;actALL = actALL +1;
     message.delete();
         let user = message.author;
         let user1 = message.mentions.users.first();
@@ -1268,6 +1324,7 @@ message.channel.send('RAS');
             });
         });
     } else if(['tickle'].includes(command)) {
+	    actRCT = actRCT + 1;actALL = actALL +1;
     message.delete();
         let user = message.author;
         let user1 = message.mentions.users.first();
@@ -1289,6 +1346,7 @@ message.channel.send('RAS');
             });
         });
     } else if(['cuddle'].includes(command)) {
+	    actRCT = actRCT + 1;actALL = actALL +1;
         message.delete();
         let user = message.author;
         let user1 = message.mentions.users.first();
@@ -1311,6 +1369,7 @@ message.channel.send('RAS');
             });
         });
     } else if(['pat'].includes(command)) {
+	    actRCT = actRCT + 1;actALL = actALL +1;
         message.delete();
         let user = message.author;
         let user1 = message.mentions.users.first();
@@ -1333,6 +1392,7 @@ message.channel.send('RAS');
             });
         });
     } else if(['hug'].includes(command)) {
+	    actRCT = actRCT + 1;actALL = actALL +1;
         message.delete();
         let user = message.author;
         let user1 = message.mentions.users.first();
@@ -1355,6 +1415,7 @@ message.channel.send('RAS');
             });
         });
     } else if(['poke'].includes(command)) {
+	    actRCT = actRCT + 1;actALL = actALL +1;
         message.delete();
         let user = message.author;
         let user1 = message.mentions.users.first();
@@ -1377,6 +1438,7 @@ message.channel.send('RAS');
             });
         });
     } else if(['neko'].includes(command)) {
+	    actIMG = actIMG + 1;actALL = actALL +1;
         message.channel.send('Загрузка...').then(msg => {
             request('https://nekos.life/api/v2/img/neko', function (error, response, body) {
                 try {
@@ -1391,6 +1453,7 @@ message.channel.send('RAS');
             });
         });
     } else if(['waifu'].includes(command)) {
+	    actIMG = actIMG + 1;actALL = actALL +1;
         message.channel.send('Загрузка...').then(msg => {
             request('https://nekos.life/api/v2/img/waifu', function (error, response, body) {
                 try {
@@ -1406,6 +1469,7 @@ message.channel.send('RAS');
         });
     } 
     else if(['feed', 'nom'].includes(command)) {
+	    actRCT = actRCT + 1;actALL = actALL +1;
         message.delete();
         let user = message.author;
         let user1 = message.mentions.users.first();
@@ -1427,7 +1491,7 @@ message.channel.send('RAS');
             });
         });
     } else if(['cat'].includes(command)) {
-        
+        actIMG = actIMG + 1;actALL = actALL +1;
         message.channel.send('Загрузка...').then(msg => {
             request('https://nekos.life/api/v2/img/meow', function (error, response, body) {
                 try {
@@ -1443,6 +1507,7 @@ message.channel.send('RAS');
             });
         });
     } else if(['anal'].includes(command)) {
+	    actNSFW = actNSFW + 1;actALL = actALL +1;
         if (!message.channel.nsfw) return message.reply("На данной команде стоит метка **`NSFW`**");
         message.channel.send('Загрузка...').then(msg => {
             request('https://nekos.life/api/v2/img/anal', function (error, response, body) {
@@ -1458,6 +1523,7 @@ message.channel.send('RAS');
             });
         });
     } else if(['hentai'].includes(command)) {
+	    actNSFW = actNSFW + 1;actALL = actALL +1;
         if (!message.channel.nsfw) return message.reply("На данной команде стоит метка **`NSFW`**");
         message.channel.send('Загрузка...').then(msg => {
             request('https://nekos.life/api/v2/img/hentai', function (error, response, body) {
@@ -1473,6 +1539,7 @@ message.channel.send('RAS');
             });
         });
     } else if(['boobs'].includes(command)) {
+	    actNSFW = actNSFW + 1;actALL = actALL +1;
         if (!message.channel.nsfw) return message.reply("На данной команде стоит метка **`NSFW`**");
         message.channel.send('Загрузка...').then(msg => {
             request('https://nekos.life/api/v2/img/boobs', function (error, response, body) {
@@ -1488,6 +1555,7 @@ message.channel.send('RAS');
             });
         });
     } else if(['pussy'].includes(command)) {
+	    actNSFW = actNSFW + 1;actALL = actALL +1;
         if (!message.channel.nsfw) return message.reply("На данной команде стоит метка **`NSFW`**");
         message.channel.send('Загрузка...').then(msg => {
             request('https://nekos.life/api/v2/img/pussy', function (error, response, body) {
@@ -1503,6 +1571,7 @@ message.channel.send('RAS');
             });
         });
     } else if(['nneko', 'nNeko'].includes(command)) {
+	    actNSFW = actNSFW + 1;actALL = actALL +1;
         if (!message.channel.nsfw) return message.reply("На данной команде стоит метка **`NSFW`**");
         message.channel.send('Загрузка...').then(msg => {
             request('https://nekos.life/api/v2/img/nsfw_neko_gif', function (error, response, body) {
