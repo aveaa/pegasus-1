@@ -403,7 +403,7 @@ message.edit("```"+body+"```");
                         break;
 			default:
                         new_text += sym;
-                }
+                
 let searchUrl = `https://www.google.com/search?q=${encodeURIComponent(args.join(' '))}`;
   message.channel.send(`Ищу в google ${args.join(' ')}...`).then(m => m.delete(2500))
   return snekfetch.get(searchUrl).then((result) => {
@@ -418,6 +418,7 @@ let searchUrl = `https://www.google.com/search?q=${encodeURIComponent(args.join(
   }).catch((err) => {
     message.channel.send(`По запросу ${args.join(' ')} ничего не найдено...`)
   });
+                }
 } else if(['pin'].includes(command) && message.member.hasPermission('MANAGE_MESSAGES')) {
         let kanal = (args[0])
         let sms = (args[1])
