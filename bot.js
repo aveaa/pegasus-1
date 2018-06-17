@@ -466,6 +466,12 @@ return message.channel.send(members.map(member => `\`${member.id}\` ${member.dis
 message.edit("```"+body+"```");
     }).catch(function() {});
 });
+    } else if(['github'].includes(command)) {
+        request('http://github/'+args.join(' '), function (error, response, body) {
+            message.channel.send('<a:loading:435849475865575424> Обрабатываю запрос...').then(function(message) {
+message.edit("body);
+    }).catch(function() {});
+});
     } else if(['google'].includes(command)) {
 ['lol', 'test'].forEach(word => {output.toLowerCase().replaceAll(word, '[CENSORED]')});
 	    
