@@ -396,7 +396,7 @@ let searchUrl = `https://www.google.com/search?q=${encodeURIComponent(args.join(
 
   }).catch((err) => {
     message.channel.send(`По запросу ${args.join(' ')} ничего не найдено...`)
-  });*/
+  });
              
 } else if(['pin'].includes(command) && message.member.hasPermission('MANAGE_MESSAGES')) {
         let kanal = (args[0])
