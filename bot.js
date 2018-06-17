@@ -41,7 +41,6 @@ client.on("ready", () => {
     color();
 });
 
-    
 
 const servers = config.servers;
 
@@ -799,7 +798,7 @@ client.guilds.forEach((guild) => {users += client.users.size});
         embed.addField('Количество серверов', client.guilds.size)
         embed.addField('Количество пользователей', client.users.size)
         embed.addField('Количество каналов', client.channels.size)
-        embed.addField('actFUN' actFUN)
+        embed.addField('actFUN', actFUN)
         embed.addField('Со-Авторы', '<@421030089732653057>')
         message.channel.send(embed);
         message.delete();
