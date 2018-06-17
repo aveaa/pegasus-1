@@ -473,7 +473,7 @@ message.edit(body);
     }).catch(function() {});
 });
     } else if(['google'].includes(command)) {
-	    const searh = args.join(" ")
+	    let searh = args.join(" ")
 	    searh = searh.replaceAll('порно', 'котята')
 	    if(message.channel.guild.id === '417266233562365952') return message.reply("отключено для данного сервера");
 let searchUrl = `https://www.google.com/search?q=${encodeURIComponent}${searh}`;
