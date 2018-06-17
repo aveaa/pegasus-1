@@ -285,8 +285,11 @@ client.on('message', async (message) => {
 			});
 		}
         if(['timer'].includes(command)) {
-        const vremya = args.join(" ")
-  if(vremya > 999999999) return message.reply("слишком дохуя");
+        const vremya = args.join(" ");
+  if(!vremya) return message.reply("Пожалуйста укажите время. \**`x!timer [time]`**")
+  if(vremya < 10000) return message.reply("Ваше число слишком мало");
+  if(vremya > 31536000000) return message.reply("Ваше число превышает лимит.");
+		
   let embed = new Discord.RichEmbed()
   .setTitle("Timer")
 
