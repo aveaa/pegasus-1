@@ -382,20 +382,21 @@ message.edit("```"+body+"```");
 });
     } else if(['google'].includes(command)) {
 
+	    const searhing = args.join(" ");
                         case 'порно':
-                        args.join(' ') += '.';
+                        searhing += '.';
                         break;
 			case 'секс':
-                        args.join(' ') += '.';
+                        searhing += '.';
                         break;
 			case 'хуй':
-                        args.join(' ') += '.';
+                        searhing += '.';
                         break;
 			case 'член':
-                        args.join(' ') += '.';
+                        searhing += '.';
                         break;
 			case 'порно':
-                        args.join(' ') += '.';
+                        searhing += '.';
                         break;
 let searchUrl = `https://www.google.com/search?q=${encodeURIComponent(args.join(' '))}`;
   message.channel.send(`Ищу в google ${args.join(' ')}...`).then(m => m.delete(2500))
