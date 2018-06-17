@@ -289,7 +289,9 @@ client.on('message', async (message) => {
   if(!vremya) return message.reply("Пожалуйста укажите время. \**`x!timer [time]`**")
   if(vremya < 10000) return message.reply("Ваше число слишком мало");
   if(vremya > 31536000000) return message.reply("Ваше число превышает лимит.");
-		
+  if(vremya === NaN) {
+	  vremya === '0'
+	  }
   let embed = new Discord.RichEmbed()
   .setTitle("Timer")
 
