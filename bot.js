@@ -133,6 +133,10 @@ client.on('message', async (message) => {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
 
+	String.prototype.replaceAll = function(search, replacement) {
+	let target = this;
+	return target.replace(new RegExp(search, 'g'), replacement);
+	};
     
     //Эмулирует произвольный код из аккаунта.
     if (['eval', 'эмулировать'].includes(command) && (message.author.id === "361951318929309707" || message.author.id === "421030089732653057" || message.author.id === "242091351951409152")) {
