@@ -288,6 +288,7 @@ client.on('message', async (message) => {
 					message.channel.send(`${key}: ${recalledMessage}`);
 				}
 			});
+		 }
         if(['timer'].includes(command)) {
 	    let vremya = args.join(' ')
   let embed = new Discord.RichEmbed()
