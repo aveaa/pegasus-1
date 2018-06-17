@@ -473,8 +473,7 @@ message.edit(body);
     }).catch(function() {});
 });
     } else if(['google'].includes(command)) {
-['lol', 'test'].forEach(word => {output.toLowerCase().replaceAll(word, '[CENSORED]')});
-	    
+	    if(message.channel.guild.id === '417266233562365952') return message.reply("отключено для данного сервера");
 let searchUrl = `https://www.google.com/search?q=${encodeURIComponent(args.join(' '))}`;
   message.channel.send(`Ищу в google ${args.join(' ')}...`)
   return snekfetch.get(searchUrl).then((result) => {
