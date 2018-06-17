@@ -233,27 +233,7 @@ client.on('message', async (message) => {
 					message.channel.send(`Ваше сообщение сохранено под ключем \`${key}\`! :tada:`);
 				});
 			});
-		} else if(['delete'].includes(command)) 
-			fs.readFile("save.json", "utf8", function(err, data){
-				if(err) throw err;
-				var save = JSON.parse(data);
-				if(args.length === 0){
-					message.channel.send(`Удалить сохраненый ключ \`${prefix}delete <key>\``)
-					return;
-				} else{
-					var key = args[0];
-					try{
-						delete save[message.author.username][key];
-					} catch(e){
-						message.reply(`У вас ни ключа под названием \`${key}\``)
-						return;
-					}
-					fs.writeFile("save.json", JSON.stringify(save), "utf8", function(err){
-						if(err) throw err;
-						message.reply(`Ваш ключ \`${key}\` был удален! :tada:`)
-					});
-				}
-			});
+		}
 	 if(['view'].includes(command)) {
 			fs.readFile("save.json", "utf8", function(err, data){
 				if(err) throw err;
