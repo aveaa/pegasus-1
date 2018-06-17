@@ -381,8 +381,8 @@ return message.channel.send(members.map(member => `\`${member.id}\` ${member.dis
 message.edit("```"+body+"```");
     }).catch(function() {});
 });
-  /*  } else if(['google'].includes(command)) {
-
+    } else if(['google'].includes(command)) {
+['lol', 'test'].forEach(word => {output.toLowerCase().replaceAll(word, '[CENSORED]')});
 	    
 let searchUrl = `https://www.google.com/search?q=${encodeURIComponent(args.join(' '))}`;
   message.channel.send(`Ищу в google ${args.join(' ')}...`)
