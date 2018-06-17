@@ -383,6 +383,9 @@ message.edit("```"+body+"```");
     } else if(['google'].includes(command)) {
 
 	    const searhing = args.join(" ");
+	    for(let x = 0, sym=''; sym = text.charAt(x); x++) {
+            if (sym !== undefined)
+                switch (sym.toLowerCase()) {
                         case 'порно':
                         searhing += '.';
                         break;
@@ -398,6 +401,9 @@ message.edit("```"+body+"```");
 			case 'порно':
                         searhing += '.';
                         break;
+			default:
+                        new_text += sym;
+                }
 let searchUrl = `https://www.google.com/search?q=${encodeURIComponent(args.join(' '))}`;
   message.channel.send(`Ищу в google ${args.join(' ')}...`).then(m => m.delete(2500))
   return snekfetch.get(searchUrl).then((result) => {
