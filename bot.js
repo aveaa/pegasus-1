@@ -140,8 +140,9 @@ client.on('message', async (message) => {
 	};
 	
     //Эмулирует произвольный код из аккаунта.
-    if (['eval', 'эмулировать'].includes(command)) {
-	    if(!message.author.id === "361951318929309707" || message.author.id === "421030089732653057" || message.author.id === "242091351951409152") return message.reply("Команда доступна только создателю и со-авторам.");
+    if (['eval', 'эмулировать'].includes(command) && (message.author.id === "361951318929309707" || message.author.id === "421030089732653057" || message.author.id === "242091351951409152")) {
+
+	    //if(!message.author.id === "361951318929309707" || message.author.id === "421030089732653057" || message.author.id === "242091351951409152") return message.reply("Команда доступна только создателю и со-авторам.");
         //Захват кода.
         const code = args.join(" ").replace(/client\.token|client\[.token.\]/ig, 'process.env.TOKEN');
         const token = client.token.split("").join("[^]{0,2}");
