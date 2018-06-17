@@ -391,10 +391,10 @@ let searchUrl = `https://www.google.com/search?q=${encodeURIComponent(args.join(
     let googleData = $('.r').first().find('a').first().attr('href');
 
     googleData = querystring.parse(googleData.replace('/url?', ''));
-    message.edit(`Найден результат по запросу ${args.join(' ')}:\n${googleData.q}`)
+    message.channel.send(`Найден результат по запросу ${args.join(' ')}:\n${googleData.q}`)
 
   }).catch((err) => {
-    message.edit(`По запросу ${args.join(' ')} ничего не найдено...`)
+    message.channel.send(`По запросу ${args.join(' ')} ничего не найдено...`)
   });
              
 } else if(['pin'].includes(command) && message.member.hasPermission('MANAGE_MESSAGES')) {
@@ -684,8 +684,8 @@ client.guilds.forEach((guild) => {users += client.users.size});
             .setTitle('Статистика')
             .setThumbnail(client.user.avatarURL);
         embed.addField('Пинг', client.ping, true);
-	embed.addField("UpTime", `${Math.round(client.uptime / (1000 * 60 * 60 * 24))} дней, ${Math.round(client.uptime / (1000 * 60 * 60))} часов, ${Math.round(client.uptime / (1000 * 60)) % 60} минут, ${Math.round(client.uptime / 1000) % 60} секунд`)
-      /*  embed.addField('ОЗУ', process.env.WEB_MEMORY + 'мб / ' + process.env.MEMORY_AVAILABLE + 'мб', true);
+	embed.addField("UpTime", `${Math.round(client.uptime / (1000 * 60 * 60 * 24))} дня(дней), ${Math.round(client.uptime / (1000 * 60 * 60))} часа(ов), ${Math.round(client.uptime / (1000 * 60)) % 60} минут, ${Math.round(client.uptime / 1000) % 60} секунд`)
+        /*embed.addField('ОЗУ', process.env.WEB_MEMORY + 'мб / ' + process.env.MEMORY_AVAILABLE + 'мб', true);
         embed.addField('Сервер', process.env.DYNO, true);
         embed.addField('Порт', process.env.PORT, true);*/
         embed.addField('Количество серверов', client.guilds.size)
