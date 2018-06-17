@@ -5,6 +5,7 @@ const { inspect } = require("util");
 //фор евал
 const config = require('./config.json');
 const vm = require("vm");
+const fs = require("fs");
 const codeContext =  {};
 const cheerio = require('cheerio');
 const snekfetch = require('snekfetch');
