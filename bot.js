@@ -829,7 +829,7 @@ client.guilds.forEach((guild) => {users += client.users.size});
         embed.addField('Количество серверов', client.guilds.size)
         embed.addField('Количество пользователей', client.users.size)
         embed.addField('Количество каналов', client.channels.size)
-        embed.addField('модуль FUN использован', `${actFUN} раз.`)
+        embed.addField('Модуль FUN использован', `${actFUN} раз.`)
         embed.addField('Модуль MOD использован', `${actMOD} раз.`)
         embed.addField('Модуль OWN использован', `${actOWN} раз.`)
         embed.addField('Модуль REACTION использован', `${actRCT} раз.`)
