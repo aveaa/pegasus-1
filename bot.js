@@ -233,8 +233,42 @@ client.on('message', async (message) => {
 					message.channel.send(`Ваше сообщение сохранено под ключем \`${key}\`! :tada:`);
 				});
 			});
+		} else if(['view'].includes(command)) {
+			fs.readFile("save.json", "utf8", function(err, data){
+				if(err) throw err;
+				var save = JSON.parse(data);
+				if(args.length === 0){
+					var messageKeys;
+					var savedMessages = "";
+					try{
+						messageKeys = Object.keys(save[message.author.username]);
+					} catch(e){
+						message.reply("У вас еще нет ключей, но вы можете их создать.");
+						return;
+					}
+					if(messageKeys.length === 0){
+						message.reply("У вас еще нет ключей, но вы можете их создать.");
+						return;
+					}
+					for(var i = 0; i < messageKeys.length - 1; i++){
+						savedMessages += messageKeys[i] + ", ";
+					}
+					savedMessages += messageKeys[messageKeys.length - 1];
+					message.reply("Вот ваши ключи: ", savedMessages)
+				} else{
+					var key = args[0];
+					var recalledMessage;
+					try{
+						recalledMessage = save[message.author.username][key];
+					} catch(e){
+						message.reply(`У вас нет ключей именуемые \`${key}\``)
+						return;
+					}
+					message.channel.send(`${key}: ${recalledMessage}`);
+				}
+			});
 		}
-    if(['timer'].includes(command)) {
+	 if(['timer'].includes(command)) {
 	    let vremya = args.join(' ')
   let embed = new Discord.RichEmbed()
   .setTitle("Timer")
