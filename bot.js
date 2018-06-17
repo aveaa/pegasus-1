@@ -372,8 +372,8 @@ return message.channel.send(members.map(member => `\`${member.id}\` ${member.dis
         }
         message.channel.send(new_text);
     } else if(['voice'].includes(command)) {
-        if(args[0] === 'join') return message.member.voiceChannel.join(); message.channel.send("осуществлен вход в канал: **"+ message.member.voiceChannel.name + "**")
-        if(args[0] === 'leave') return message.member.voiceChannel.leave(); message.channel.send("осуществлен выход из канала: **"+ message.member.voiceChannel.name + "**")
+        if(args[0] === 'join') return message.member.voiceChannel.join(); message.channel.send("осуществлен вход в канал: **"+ message.member.voiceChannel.name + "**");
+        if(args[0] === 'leave') return message.member.voiceChannel.leave(); message.channel.send("осуществлен выход из канала: **"+ message.member.voiceChannel.name + "**");
     } else if(['ascii'].includes(command)) {
         request('http://artii.herokuapp.com/make?text='+args.join(' '), function (error, response, body) {
             message.channel.send('<a:loading:435849475865575424> Обрабатываю запрос...').then(function(message) {
@@ -381,7 +381,7 @@ message.edit("```"+body+"```");
     }).catch(function() {});
 });
     } else if(['google'].includes(command)) {
-//let searchUrl = `https://www.google.com/search?q=${encodeURIComponent(args.join(' '))}`;
+let searchUrl = `https://www.google.com/search?q=${encodeURIComponent(args.join(' '))}`;
   message.channel.send(`Ищу в google ${args.join(' ')}...`).then(m => m.delete(2500))
   return snekfetch.get(searchUrl).then((result) => {
 
@@ -1411,4 +1411,4 @@ message.channel.send('RAS');
 });
 
 client.login(process.env.BOT_TOKEN).catch(console.error);
-process.env.BOT_TOKEN = 'NO';
+//process.env.BOT_TOKEN = 'NO';
