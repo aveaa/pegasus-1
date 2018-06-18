@@ -245,7 +245,7 @@ client.on('message', async (message) => {
 
   message.channel.send(embed);
   
-    } else if(['save'].includes(command)) {
+    }/* else if(['save'].includes(command)) {
 	    
 	    message.channel.send("**Disclaimer:** ваш ключ сохранен не навсегда, ключ будет удален при перезапуске бота.");
 			if(args.length < 2){
@@ -304,7 +304,7 @@ client.on('message', async (message) => {
 					message.channel.send(`${key}: ${recalledMessage}`);
 				}
 			});
-		}
+		}*/
         if(['timer'].includes(command)) {
 		actFUN = actFUN + 1;actALL = actALL +1;
         const vremya = args.join(" ");
