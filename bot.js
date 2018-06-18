@@ -14,7 +14,7 @@ vm.createContext(codeContext);
 //Клиент бота
 const client = new Discord.Client();
 //префикс
-const prefix = "x!";
+const prefix = "pg.";
 const creators = ['361951318929309707'];
 //массив эмодзи
 const emojis = {nya:'435849475865575424'}
@@ -34,7 +34,7 @@ client.on("ready", () => {
 
     console.log(`Успешный старт. ${client.guilds.size} серверов`);
     //Ставит боту статус.
-    client.user.setActivity(`x!help | ${client.guilds.size} servers`).catch(console.error);
+    client.user.setActivity(`pg.help | ${client.guilds.size} servers`).catch(console.error);
     //Функция необходимая для запуска радуги.
     servers.forEach(function (item1, number1) {
     if (!client.guilds.get(item1[0]) || !client.guilds.get(item1[0]).roles.get(item1[1]) || !client.guilds.get(item1[0]).roles.get(item1[1]).editable) servers.splice(number1, 1);
