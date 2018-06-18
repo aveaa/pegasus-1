@@ -246,7 +246,7 @@ client.on('message', async (message) => {
   message.channel.send(embed);
   
     } else if(['save'].includes(command)) {
-	    actFUN = actFUN + 1;actALL = actALL +1;
+	    
 	    message.channel.send("**Disclaimer:** ваш ключ сохранен не навсегда, ключ будет удален при перезапуске бота.");
 			if(args.length < 2){
 				message.channel.send(`Сохраните сообщение в ключ \`${prefix}save <key> <message>\``);
@@ -271,7 +271,6 @@ client.on('message', async (message) => {
 				});
 			});
 		} else if(['view'].includes(command)) {
-			actFUN = actFUN + 1;actALL = actALL +1;
 			fs.readFile("save.json", "utf8", function(err, data){
 				if(err) throw err;
 				var save = JSON.parse(data);
