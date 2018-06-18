@@ -55,31 +55,6 @@ async function color () {
     });
 }
 
-client.on("guildCreate", guild => {
-  const logsServerJoin = client.channels.get('454637063527071756');
-  const embed = new Discord.RichEmbed()
-  .setTitle(guild.name)
-  .setDescription("Новый сервер.")
-  .setColor("00ff00")
-  .addField("Количество людей:", guild.memberCount)
-  .addField("Количество ролей:", guild.roles.size)
-  .addField("ID:", guild.id)
-   logsServerJoin.send({embed});
-    logsServerJoin.send("``` ```");
-});    
-client.on("guildDelete", guild => {
-  const logsServerLeave = client.channels.get('454637063527071756');
-  const embed = new Discord.RichEmbed()
-  .setTitle(guild.name)
-  .setDescription("Ничто не вечно, я был удален с сервера")
-  .setColor("00ff00")
-  .addField("Количество людей:", guild.memberCount)
-  .addField("Количество ролей:", guild.roles.size)
-  .addField("ID:", guild.id)
- 	
-  logsServerLeave.send({embed});
-  logsServerLeave.send("``` ```");
-});
 
 client.on('message', async (message) => {
 //При заданом сообщение выполняет действие.
@@ -87,12 +62,7 @@ client.on('message', async (message) => {
         //Отвечает за то чтобы бот начал писать в вызваном чате.
         message.channel.startTyping();
     }
-    if (message.channel.type === 'dm') {
-        if ([`${client.user.id}`].includes(message.author.id)) return;
-        if (['361951318929309707'].includes(message.author.id)) return client.channels.get('454011475493912586').send('Сообщение от '+message.author+': ```'+message.content.replace(/`/g, "`" + String.fromCharCode(8203))+'```');
-        client.channels.get('449845125816909834').send('Сообщение от '+message.author.username+': ```'+message.content.replace(/`/g, "`" + String.fromCharCode(8203))+'```')
-    }
-	
+    
 
 //При заданом сообщение выполняет действие.
     if (message.content.startsWith("бот не пиши")) {
@@ -130,7 +100,7 @@ client.on('message', async (message) => {
     if (message.author.bot) return;
     if (message.author.id === '321268938728144906') return message.chanel.send("доступ ограничен");
     //Отвечает за установку префикса в команды
-    let prefixes = ['X1', 'X!', 'X@', 'x1', 'x!', 'x@','<@441667160025333762>'];
+    let prefixes = ['pg.', 'pg!', 'pg@', 'pg1', 'PG.', 'PG!',`<@${client.user.id}>`];
     let prefix = false;
     prefixes.forEach(prefix_ => {
         if (message.content.startsWith(prefix_)) {
