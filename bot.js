@@ -36,50 +36,9 @@ client.on("ready", () => {
     //Ставит боту статус.
     client.user.setActivity(`pg.help | ${client.guilds.size} servers`).catch(console.error);
     //Функция необходимая для запуска радуги.
-    servers.forEach(function (item1, number1) {
-    if (!client.guilds.get(item1[0]) || !client.guilds.get(item1[0]).roles.get(item1[1]) || !client.guilds.get(item1[0]).roles.get(item1[1]).editable) servers.splice(number1, 1);
-    });
-    color();
 });
 
 
-const servers = config.servers;
-
-async function color () {
-    await servers.forEach(async function (item1, number1) {
-        if (client.guilds.get(item1[0]) && client.guilds.get(item1[0]).roles.get(item1[1]).editable)
-        await colors.forEach(async function (item, number) {
-            //Ищет заданую гильдию после заданую роль, в заданой скорости вращает цвета по кругу.
-            await setTimeout(async function () {client.guilds.get(item1[0]).roles.get(item1[1]).setColor(item).catch(console.error);if(number === colors.length-1 && number1 === servers.length-1) setTimeout(function () {color().catch(console.error)}, 500)}, number*500);
-        });
-    });
-}
-
-client.on("guildCreate", guild => {
-  const logsServerJoin = client.channels.get('454637063527071756');
-  const embed = new Discord.RichEmbed()
-  .setTitle(guild.name)
-  .setDescription("Новый сервер.")
-  .setColor("00ff00")
-  .addField("Количество людей:", guild.memberCount)
-  .addField("Количество ролей:", guild.roles.size)
-  .addField("ID:", guild.id)
-   logsServerJoin.send({embed});
-    logsServerJoin.send("``` ```");
-});    
-client.on("guildDelete", guild => {
-  const logsServerLeave = client.channels.get('454637063527071756');
-  const embed = new Discord.RichEmbed()
-  .setTitle(guild.name)
-  .setDescription("Ничто не вечно, я был удален с сервера")
-  .setColor("00ff00")
-  .addField("Количество людей:", guild.memberCount)
-  .addField("Количество ролей:", guild.roles.size)
-  .addField("ID:", guild.id)
- 	
-  logsServerLeave.send({embed});
-  logsServerLeave.send("``` ```");
-});
 
 client.on('message', async (message) => {
 //При заданом сообщение выполняет действие.
@@ -130,7 +89,7 @@ client.on('message', async (message) => {
     if (message.author.bot) return;
     if (message.author.id === '321268938728144906') return message.chanel.send("доступ ограничен");
     //Отвечает за установку префикса в команды
-    let prefixes = ['X1', 'X!', 'X@', 'x1', 'x!', 'x@','<@441667160025333762>'];
+    let prefixes = ['pg.', 'pg!', 'pg@', 'pg1', 'pg?', 'PG.',`<@${client.user.id}>`];
     let prefix = false;
     prefixes.forEach(prefix_ => {
         if (message.content.startsWith(prefix_)) {
