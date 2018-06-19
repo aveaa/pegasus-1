@@ -1044,7 +1044,7 @@ message.guild.channels.filter(chan => chan.type === 'voice').forEach((channel) =
 	const embed = new Discord.RichEmbed()
 	.setTitle('Fun Commands ⚔️')
 	.setColor('#0B6623')
-	.setDescription("**pg.logo** `Shows the Servers Logo`\n\n**x!emojify [Text] ** `Turns your Text into Emojis.`\n\n**pg.timer [Time] ** `It is Just like an alarm clock.`***(1000ms = 1 секунда)***\n\n**pg.save [Pin No.] [Text]  **`A Save for your Secret Text`\n\n**pg.view [Pin No.]** `See the List of saves for your secret texts.`\n\n**pg.count** `Just Counts the Commands?`")
+	.setDescription("**pg.logo** `Shows the Servers Logo`\n\n**pg.emojify [Text] ** `Turns your Text into Emojis.`\n\n**pg.timer [Time] ** `It is Just like an alarm clock.`***(1000ms = 1 секунда)***\n\n**pg.save [Pin No.] [Text]  **`A Save for your Secret Text`\n\n**pg.view [Pin No.]** `See the List of saves for your secret texts.`\n\n**pg.count** `Just Counts the Commands?`")
         .setFooter('pg.h for Full commands list')
 	.setTimestamp();
 	 message.channel.send({embed});
