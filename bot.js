@@ -684,16 +684,16 @@ let searchUrl = `https://www.google.com/search?q=${encodeURIComponent(searh)}`;
     } else {
       message.reply('У тебя нет прав!');
     }
-  } else if (['xkick'].includes(command) && message.author.id === "361951318929309707") {
+  } else if (['kick'].includes(command) && message.author.id === "361951318929309707") {
 	  actOWN = actOWN + 1;actALL = actALL +1;
             const user = message.mentions.users.first();
     if (user) {
       const member = message.guild.member(user);
       if (member) {
         member.kick('кикнут').then(() => {
-          message.reply(`успешно кикнул ${user.tag}`);
+          message.reply(`${user.tag} has been kicked.`);
         }).catch(err => {
-          message.reply('У меня недостаточно прав!');
+          message.reply('You do not have moderation permissions!');
           console.error(err);
         });
       } else {
