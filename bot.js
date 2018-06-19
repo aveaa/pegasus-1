@@ -1316,15 +1316,15 @@ message.channel.send('RAS');
             user = client.user;
             user1 = message.author;
         }
-        message.channel.send('Загрузка...').then(msg => {
+        message.channel.send('**Loading...**').then(msg => {
             request('https://nekos.life/api/v2/img/tickle', function (error, response, body) {
                 try {
                     let arr = JSON.parse(body);
                     let embed = new Discord.RichEmbed()
-                        .setDescription(`${user} пощекотал(а) ${user1}`)
+                        .setDescription(`${user} tickled. ${user1}`)
                         .setImage(arr['url'])
                         .setColor('#ffff00')
-			.setFooter("powered by nekos.life");
+			.setFooter("Powered by Neko Discord.");
                     msg.edit(`${user1}`, {embed});
                 } catch (e) {console.log(e)}
             });
@@ -1338,16 +1338,16 @@ message.channel.send('RAS');
             user = client.user;
             user1 = message.author;
         }
-        message.channel.send('Загрузка...').then(msg => {
+        message.channel.send('**Loading...**').then(msg => {
             request('https://nekos.life/api/v2/img/cuddle', function (error, response, body) {
                 try {
                     let arr = JSON.parse(body);
                     let embed = new Discord.RichEmbed()
-                        .setTitle(':3')
+                        .setTitle('Cuddlers! Awww ...')
                         .setDescription(`${user} прижался(ась) к ${user1}`)
                         .setImage(arr['url'])
                         .setColor('#00ffff')
-			.setFooter("powered by nekos.life");
+			.setFooter("Powered by Neko Discord");
                     msg.edit(`${user1}`, {embed});
                 } catch (e) {console.log(e)}
             });
