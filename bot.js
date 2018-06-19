@@ -1025,11 +1025,14 @@ message.guild.channels.filter(chan => chan.type === 'voice').forEach((channel) =
             .setFooter(message.channel.guild.name)
             .setTimestamp();
         message.channel.send({embed});
-    } else if (['helpembed','he'].includes(command)) {
-	    actFUN = actFUN + 1;actALL = actALL +1;
-        message.channel.send("```{description: текст описания} \n{title: текст заголовка} \n{field: имя | value: текст} \n{timestamp}(временая метка) \n{footer: нижний текст} \n{color: #цвет} \n{image: url} \n{thumbnail url}```")
-        message.channel.send("Пример: ```x!embed {thumbnail: https://cdn.discordapp.com/emojis/429653035984355338.png}{title: hello world}{description: привет ☮️}{field: пункт 1 | value: содержание пункта}{timestamp}{footer: XeVAL}{color: 00ff00}```")
-    } else if(['userinfo', 'ui'].includes(command)) {
+       } else if(['helpembed', 'he'].includes(command)) {
+        const embed = new Discord.RichEmbed()
+        .setColor("#00ff00")
+        .setDescription("__**Embed Text Commands**__ :link: \n\n**{description: description text}** `text bellow entered bellow the title ` \n**{title: header text}**  `header title that can be seen at the top of the embed` \n**{field: name | value: text}**  `Makes a second row column title with description` \n**{timestamp}** ` To show the time it was embed.` \n**{footer: bottom text}**  `shows who wrote the message at the bottom` \n**{color: # color}**  `Colour of the embed box at the left side.` \n**{image: url}**  `If there is a Image from a external URL Link you want to embed` \n**{thumbnail url}**  `If there is a Thumbnail from a external URL Link you want to embed` \n\n**Example:** \n`pg.embed {thumbnail: https://cdn.discordapp.com/attachments/443354515937427480/444145870745763851/info-1459077_960_720.png}{title: Embed Example}{description: Good Day Mate}{field: How to use embed? | value: This is how you use.}{timestamp}{footer: pg.he for help}{color: 4e5d94}`")
+        .setFooter("embed")
+        .setTimestamp();
+        message.channel.send({embed});
+       } else if(['userinfo', 'ui'].includes(command)) {
 	    actFUN = actFUN + 1;actALL = actALL +1;
                 message.delete().catch(O_o => {});
         let member = message.guild.members.get(message.author.id);
