@@ -176,11 +176,11 @@ client.on('message', async (message) => {
 };
 	    if(['tts'].includes(command)) {
 		    actMOD = actMOD + 1;actALL = actALL +1;
-	    if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply("Вы не являетесь модератором.");
+	    if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply("You Do Not have Moderator Permissions.");
 	    const ttsmessage = args.join(" ")
 	    message.channel.send(ttsmessage, {tts: true});
 	    message.delete(); 
-    } else if(['count', 'копить'].includes(command)) {
+    } else if(['count', 'counting'].includes(command)) {
 	   // let replies = ['успех ✓', 'успех x2✓', 'неудача'];
 	  //  let result = Math.floor((Math.random() * replies.length));
             message.channel.send(`${gameCount}, успех ✓`)
@@ -267,10 +267,10 @@ client.on('message', async (message) => {
         if(['timer'].includes(command)) {
 		actFUN = actFUN + 1;actALL = actALL +1;
         const vremya = args.join(" ");
-  if(!vremya) return message.reply("Пожалуйста укажите время. \n**`x!timer [time]`**")
-  if(vremya < 10000) return message.reply("Ваше число слишком мало");
-  if(vremya > 31536000000) return message.reply("Ваше число превышает лимит.");
-  if(vremya === 'NaN') return message.reply("Пожалуйста укажите время. \n**`x!timer [time]`**")
+  if(!vremya) return message.reply("Please Specify the Duration of the timer.\n**`pg.timer [time]`**")
+  if(vremya < 10000) return message.reply("Your Duration is Too Short. Please try again.");
+  if(vremya > 31536000000) return message.reply("Your Duration have exceeded the Limits. Please try again.");
+  if(vremya === 'NaN') return message.reply("Please Specify the Duration of the timer.\n**`x!timer [time]`**")
   let embed = new Discord.RichEmbed()
   .setTitle("Timer")
 
@@ -463,11 +463,11 @@ message.edit(body);
     } else if(['google'].includes(command)) {
 	    actFUN = actFUN + 1;actALL = actALL +1;
 	    let searh = args.join(" ")
-	    searh = searh.replaceAll('порно', 'котята')
+	    searh = searh.replaceAll('porn', 'pussy','vagina','dick','boobs')
 	   /* message.content = message.content.replaceAll('порно', 'котята')*/
-	    if(message.channel.guild.id === '417266233562365952') return message.reply("отключено для данного сервера");
+	    if(message.channel.guild.id === '417266233562365952') return message.reply("Command Unavalible for this Channel.");
 let searchUrl = `https://www.google.com/search?q=${encodeURIComponent(searh)}`;
-  message.channel.send(`Ищу в google ${searh}...`)
+  message.channel.send(`Search for all Google Results from ${searh}...`)
   return snekfetch.get(searchUrl).then((result) => {
 
     let $ = cheerio.load(result.text);
