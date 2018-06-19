@@ -1032,7 +1032,15 @@ message.guild.channels.filter(chan => chan.type === 'voice').forEach((channel) =
         .setFooter("embed")
         .setTimestamp();
         message.channel.send({embed});
-       } else if(['userinfo', 'ui'].includes(command)) {
+       } else if(['hstandard','helpstandard'].includes(command)) {
+	const embed = new Discord.RichEmbed()
+	.setTitle('Standard Commands🐦')
+	.setColor('#800000')
+	.setDescription("**pg.say [Message]** `Bot will repeat what you command him to say.`\n\n**pg.embed** `embed Links and other stuff. ` *** pg.he for help *** \n\n**pg.rs [Channel ID][Message]** `Sends a message to the Specific Channel`\n\n**pg.invite** `Invite Pegasus to your server`\n\n**pg.servers** `See Bot Developers Info, Server and ID's`\n\n**pg.roles** `See the Roles in a Server.`\n\n**pg.afk <Reason> **`Just shows why you AFK.`\n\n**pg.ping** проверка. \n\n**pg.ship [Name 1][Name 2]** `Lovers Compatibility Check.`\n\n**pg.summon [User] <Reason>** `So called mention/call a person.`\n\n**pg.about** `See the bots Statistics`\n\n**pg.userinfo** `See a Users Statistics`\n\n**pg.serverinfo** `See the Servers Statistics`\n**pg.nya** `Check the Emoji Team!`\n\n**pg.poll [Poll Question and Choices]** `Set-up a Voting Poll`\n\n**pg.idea** `Suggest and Idea for the server`\n\n**pg.avatar** `View a Users avatar`")
+        .setFooter('pg.h for full commands list')
+	.setTimestamp();
+	 message.channel.send({embed});
+	} else if(['userinfo', 'ui'].includes(command)) {
 	    actFUN = actFUN + 1;actALL = actALL +1;
                 message.delete().catch(O_o => {});
         let member = message.guild.members.get(message.author.id);
