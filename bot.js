@@ -1040,7 +1040,7 @@ message.guild.channels.filter(chan => chan.type === 'voice').forEach((channel) =
         .setFooter('pg.h for full commands list')
 	.setTimestamp();
 	 message.channel.send({embed});
-       } else if(['hFun','helpFun'].includes(command)) {
+       } else if(['hfun','helpfun'].includes(command)) {
 	const embed = new Discord.RichEmbed()
 	.setTitle('Fun Commands')
 	.setColor('#0B6623')
