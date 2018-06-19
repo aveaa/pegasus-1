@@ -155,15 +155,15 @@ client.on('message', async (message) => {
 } */
 	if(['addrole'].includes(command)) {
 		actMOD = actMOD + 1;actALL = actALL +1;
-  if(!message.member.hasPermission('MANAGE_ROLES')) return message.reply("Вы не являетесь модератором.");
+  if(!message.member.hasPermission('MANAGE_ROLES')) return message.reply("You Do not have Moderator Commands");
   let role = message.mentions.roles.first();
   if (!role) return message.channel.send(`Выберите роль.`);
   let member = message.mentions.members.first();
-  if (!member) return message.channel.send("Выберите пользователя.");
+  if (!member) return message.channel.send("Please Select a User to Give the Role to.");
   let roleid = role.id;
   let rolename = role.name;
   
-  if (!message.guild.roles.get(roleid)) return message.channel.send(`Роль не найдена..`);
+  if (!message.guild.roles.get(roleid)) return message.channel.send(`No Existing Role Found. Please Try again `);
   member.addRole(role.id);
   let em = new Discord.RichEmbed()
   .setTitle("Addrole")
@@ -171,7 +171,7 @@ client.on('message', async (message) => {
   .setTimestamp()
   message.channel.send({embed: em})
   if (member.displayName) {
-    em.setDescription(`Роль ${rolename} успешно добавлена к пользователю ${member.displayName}.`)
+    em.setDescription(`The Role, ${rolename} has been Given to ${member.displayName}.`)
   }
 };
 	    if(['tts'].includes(command)) {
