@@ -1025,7 +1025,7 @@ message.guild.channels.filter(chan => chan.type === 'voice').forEach((channel) =
             .setFooter(message.channel.guild.name)
             .setTimestamp();
         message.channel.send({embed});
-    } else if (['helpembed'].includes(command)) {
+    } else if (['helpembed','he'].includes(command)) {
 	    actFUN = actFUN + 1;actALL = actALL +1;
         message.channel.send("```{description: текст описания} \n{title: текст заголовка} \n{field: имя | value: текст} \n{timestamp}(временая метка) \n{footer: нижний текст} \n{color: #цвет} \n{image: url} \n{thumbnail url}```")
         message.channel.send("Пример: ```x!embed {thumbnail: https://cdn.discordapp.com/emojis/429653035984355338.png}{title: hello world}{description: привет ☮️}{field: пункт 1 | value: содержание пункта}{timestamp}{footer: XeVAL}{color: 00ff00}```")
