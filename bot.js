@@ -520,43 +520,43 @@ let searchUrl = `https://www.google.com/search?q=${encodeURIComponent(searh)}`;
    let user3 = message.guild.member(message.guild.members.get(args[2]));
 
     if (bondLevel > 100 ) {
-        var ship = 'Идеальная пара <3_<3 :ok_hand:'
+        var ship = 'IDEAL PERFECTION :smile:!'
         var bondLevelResults = `♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥`
     } else
     if (bondLevel == 100) {
-        var ship = 'Ммм. yже не так плоxо <3 :ok_hand:'
+        var ship = 'PERFECTION :smile:!'
         var bondLevelResults = `♥♥♥♥♥♥♥♥♥♥`
     } else
     if (bondLevel >= 90 && bondLevel < 100) {
-        var ship = 'Отличная пара <3'
+        var ship = 'Very Good :smile:!'
         var bondLevelResults = `♥♥♥♥♥♥♥♥♥🖤`
     } else
     if (bondLevel >= 80 && bondLevel < 90) {
-        var ship = 'Отличная пара <3'
+        var ship = 'Pretty Good! :smile:'
         var bondLevelResults = `♥♥♥♥♥♥♥♥🖤🖤`
     } else
     if (bondLevel >= 75 && bondLevel < 80) {
-        var ship = 'Отличная пара <3'
+        var ship = 'Getting Better! :smiley:'
         var bondLevelResults = `♥♥♥♥♥♥♥🖤🖤🖤`
     } else
     if (bondLevel >= 70 && bondLevel < 75) {
-        var ship = 'Немного рискованно, но может работать! '
+        var ship = 'Can Get Better! :smiley:'
         var bondLevelResults = '♥♥♥♥♥♥♥🖤🖤🖤'
     } else
     if (bondLevel >= 60 && bondLevel < 70) {
-        var ship = 'не все потерено.'
+        var ship = 'Just above average :neutral_face:.'
         var bondLevelResults = '♥♥♥♥♥♥🖤🖤🖤🖤'
     } else
     if (bondLevel >= 50 && bondLevel < 60) {
-        var ship = '=/. '
+        var ship = 'Passing average :neutral_face:. '
         var bondLevelResults = `♥♥♥♥♥🖤🖤🖤🖤🖤`
     } else
     if (bondLevel >= 40 && bondLevel < 50) {
-        var ship = '... '
+        var ship = 'Still Possible :neutral_face:'
         var bondLevelResults = `♥♥♥♥🖤🖤🖤🖤🖤🖤`
     } else
     if (bondLevel >= 30 && bondLevel < 40) {
-        var ship = 'Все плохо.'
+        var ship = 'Lower than average :frowning:'
         var bondLevelResults = `♥♥♥🖤🖤🖤🖤🖤🖤🖤`
     } else
     if (bondLevel >= 25 && bondLevel < 30) {
@@ -564,15 +564,15 @@ let searchUrl = `https://www.google.com/search?q=${encodeURIComponent(searh)}`;
         var bondLevelResults = `♥♥🖤🖤🖤🖤🖤🖤🖤🖤`
     } else
     if (bondLevel >= 20 && bondLevel < 25) {
-        var ship = 'Rip'
+        var ship = 'Pretty Bad :frowning:'
         var bondLevelResults = `♥♥🖤🖤🖤🖤🖤🖤🖤🖤`
     } else
     if (bondLevel >= 10 && bondLevel < 20) {
-        var ship = 'Rip'
+        var ship = 'Cant Work it Out :frowning:'
         var bondLevelResults = `​♥🖤🖤🖤🖤🖤🖤🖤🖤🖤`
     } else
     if (bondLevel >= 0 && bondLevel < 10) {
-        var ship = 'Не возможно...'
+        var ship = 'Will Never Work out :frowning:'
         var bondLevelResults = `🖤🖤🖤🖤🖤🖤🖤🖤🖤🖤`
     }
 
@@ -580,11 +580,11 @@ let searchUrl = `https://www.google.com/search?q=${encodeURIComponent(searh)}`;
     if(!args[1]){
         var bondEmbed = new Discord.RichEmbed()
 
-        .setColor("#f5a3fa")
-        .addField("люди", `${message.author} ♥ ${args[0]}`)
-        .addField("Очки соместимости", `${bondLevel}%`)
-        .addField("Любовь..", bondLevelResults)
-        .addField("Ответ", ship);
+        .setColor("##f5a3fa")
+        .addField(":heartpulse:** MATCHMAKING **:heartpulse:", `${message.author} ♥ ${args[0]}`)
+        .addField("***BOND LEVEL***", `${bondLevel}%`)
+        .addField("***Percentage...***", bondLevelResults)
+        .addField("**Result?**", ship);
 
 
         return message.channel.send(bondEmbed)
@@ -594,10 +594,10 @@ let searchUrl = `https://www.google.com/search?q=${encodeURIComponent(searh)}`;
         var bondEmbed5 = new Discord.RichEmbed()
 
         .setColor("#f5a3fa")
-        .addField("люди", `${args[0]} ♥ ${args[1]}`)
-        .addField("Очки соместимости", `100%`)
-        .addField("Любовь..", `♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥`)
-        .addField("Ответ", `Идеальная пара <3_<3 :ok_hand:`);
+        .addField(":heartpulse:** MATCHMAKING **:heartpulse:", `${args[0]} ♥ ${args[1]}`)
+        .addField("***BOND LEVEL***", `100%`)
+        .addField("***Percentage...***", `♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥`)
+        .addField("**Result?**", `Идеальная пара <3_<3 :ok_hand:`);
 
 
         return message.channel.send(bondEmbed5)
@@ -607,10 +607,10 @@ let searchUrl = `https://www.google.com/search?q=${encodeURIComponent(searh)}`;
         var bondEmbed2 = new Discord.RichEmbed()
 
         .setColor("#f5a3fa")
-        .addField("люди", `${args[0]} ♥ ${args[1]}`)
-        .addField("Очки соместимости", `${bondLevel}%`)
-        .addField("Любовь..", bondLevelResults)
-        .addField("Ответ", ship);
+        .addField(":heartpulse:** MATCHMAKING **:heartpulse:", `${args[0]} ♥ ${args[1]}`)
+        .addField("***BOND LEVEL***", `${bondLevel}%`)
+        .addField("***Percentage...***", bondLevelResults)
+        .addField("**Result?**", ship);
 
 
         return message.channel.send(bondEmbed2)
