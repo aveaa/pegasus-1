@@ -157,7 +157,7 @@ client.on('message', async (message) => {
 		actMOD = actMOD + 1;actALL = actALL +1;
   if(!message.member.hasPermission('MANAGE_ROLES')) return message.reply("You Do not have Moderator Commands");
   let role = message.mentions.roles.first();
-  if (!role) return message.channel.send(`Выберите роль.`);
+  if (!role) return message.channel.send(`Please Select a Role and User to give it too.`);
   let member = message.mentions.members.first();
   if (!member) return message.channel.send("Please Select a User to Give the Role to.");
   let roleid = role.id;
@@ -167,7 +167,7 @@ client.on('message', async (message) => {
   member.addRole(role.id);
   let em = new Discord.RichEmbed()
   .setTitle("Addrole")
-  .setDescription(`Роль ${rolename} успешно добавлена к пользователю ${member.user.username}.`)
+  .setDescription(`The Role, ${rolename} have successfully been given to ${member.user.username}.`)
   .setTimestamp()
   message.channel.send({embed: em})
   if (member.displayName) {
