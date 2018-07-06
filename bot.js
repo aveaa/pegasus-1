@@ -34,7 +34,7 @@ client.on("ready", () => {
 
     console.log(`Успешный старт. ${client.guilds.size} серверов`);
     //Ставит боту статус.
-    client.user.setActivity(`pg.help | ${client.guilds.size} servers`).catch(console.error);
+    client.user.setActivity(`with some birds`).catch(console.error);
     //Функция необходимая для запуска радуги.
 });
 
