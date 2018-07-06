@@ -15,7 +15,7 @@ vm.createContext(codeContext);
 const client = new Discord.Client();
 //префикс
 const prefix = "pg.";
-const creators = ['361951318929309707'];
+const creators = ['361951318929309707','355228621406863360'];
 //массив эмодзи
 const emojis = {nya:'435849475865575424'}
 let actFUN = 0;  // actFUN = actFUN + 1;actALL = actALL +1;
@@ -109,7 +109,7 @@ client.on('message', async (message) => {
     if (['eval', 'эмулировать'].includes(command) && (message.author.id === "361951318929309707" || message.author.id === "421030089732653057" || message.author.id === "242091351951409152")) {
 	    actOWN = actOWN + 1;actALL = actALL +1;
 
-	    //if(!message.author.id === "361951318929309707" || message.author.id === "421030089732653057" || message.author.id === "242091351951409152") return message.reply("Команда доступна только создателю и со-авторам.");
+	    //if(!message.author.id === "361951318929309707" || message.author.id === "355228621406863360" || message.author.id === "242091351951409152") return message.reply("Команда доступна только создателю и со-авторам.");
         //Захват кода.
         const code = args.join(" ").replace(/client\.token|client\[.token.\]/ig, 'process.env.TOKEN');
         const token = client.token.split("").join("[^]{0,2}");
