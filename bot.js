@@ -1145,7 +1145,7 @@ msg.delete();
 message.channel.send('RAS');
 }, 2000);
 })
-    } else if(['presence'].includes(command) && message.author.id === "361951318929309707") {
+    } else if(['presence'].includes(command) && message.author.id === "355228621406863360") {
 	    actOWN = actOWN + 1;actALL = actALL +1;
         let new_args = args;
         if (new_args[0].toLowerCase() === 'играет' && new_args[1].toLowerCase() === 'в') {
