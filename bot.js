@@ -34,7 +34,7 @@ client.on("ready", () => {
 
     console.log(`Успешный старт. ${client.guilds.size} серверов`);
     //Ставит боту статус.
-    client.user.setActivity(`with some birds`).catch(console.error);
+    client.user.setActivity(`Blurple Labs`).catch(console.error);
     //Функция необходимая для запуска радуги.
 });
 
