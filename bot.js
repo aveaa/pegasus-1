@@ -109,10 +109,10 @@ client.on('message', async (message) => {
 	client.on('guildMemberAdd', member => {
     var embed = new Discord.RichEmbed()
     .setAuthor(member.user.username, member.user.avatarURL)
-    .setDescription("Welcome to **Wumpus' Universe**")
+    .setDescription("Welcome to **Blurple Labs**")
     .setThumbnail(member.user.avatarURL)
     .setColor('0x28ec13')
-    if (member.guild.id === "386507755751473164") {
+    if (member.guild.id === "361038979367436291") {
         const channel = member.guild.channels.find("name", 'general');
         if (!channel) return;
         channel.send({embed})
