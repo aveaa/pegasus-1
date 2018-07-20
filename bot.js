@@ -106,6 +106,19 @@ client.on('message', async (message) => {
 	};
 	
     //Эмулирует произвольный код из аккаунта.
+	client.on('guildMemberAdd', member => {
+    var embed = new Discord.RichEmbed()
+    .setAuthor(member.user.username, member.user.avatarURL)
+    .setDescription("Welcome to **Wumpus' Universe**")
+    .setThumbnail(member.user.avatarURL)
+    .setColor('0x28ec13')
+    if (member.guild.id === "386507755751473164") {
+        const channel = member.guild.channels.find("name", 'general');
+        if (!channel) return;
+        channel.send({embed})
+    }
+})
+	
     if (['eval', 'эмулировать'].includes(command) && (message.author.id === "355228621406863360" || message.author.id === "421030089732653057" || message.author.id === "242091351951409152")) {
 	    actOWN = actOWN + 1;actALL = actALL +1;
 
