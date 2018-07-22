@@ -47,9 +47,7 @@ client.on('message', async (message) => {
         message.channel.startTyping();
     }
     if (message.channel.type === 'dm') {
-        if ([`${client.user.id}`].includes(message.author.id)) return;
-        if (['361951318929309707'].includes(message.author.id)) return client.channels.get('454011475493912586').send('Сообщение от '+message.author+': ```'+message.content.replace(/`/g, "`" + String.fromCharCode(8203))+'```');
-        client.channels.get('449845125816909834').send('Сообщение от '+message.author.username+': ```'+message.content.replace(/`/g, "`" + String.fromCharCode(8203))+'```')
+        return;
     }
 	
 
@@ -87,7 +85,7 @@ client.on('message', async (message) => {
 
     
     if (message.author.bot) return;
-    if (message.author.id === '321268938728144906') return message.chanel.send("доступ ограничен");
+    if (message.author.id === '321268938728144906') return;
     //Отвечает за установку префикса в команды
     let prefixes = ['pg.', 'pg!', 'pg@', 'pg1', 'pg?', 'PG.',`<@${client.user.id}>`];
     let prefix = false;
