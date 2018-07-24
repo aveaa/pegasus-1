@@ -87,7 +87,7 @@ client.on('message', async (message) => {
     if (message.author.bot) return;
     if (message.author.id === '321268938728144906') return;
     //Отвечает за установку префикса в команды
-    let prefixes = ['pg.', 'pg!', 'pg@', 'pg1', 'pg?', 'PG.',`<@${client.user.id}>`];
+    let prefixes = ['blabs.', 'blabs!', 'blabs@', 'blabs1', 'blabs?', 'BLABS.',`<@${client.user.id}>`];
     let prefix = false;
     prefixes.forEach(prefix_ => {
         if (message.content.startsWith(prefix_)) {
@@ -111,7 +111,7 @@ client.on('message', async (message) => {
     .setThumbnail(member.user.avatarURL)
     .setColor('0x28ec13')
     if (member.guild.id === "361038979367436291") {
-        const channel = member.guild.channels.find("name", 'general');
+        const channel = message.channel.guild.id("431358294716841994");
         if (!channel) return;
         channel.send({embed})
     }
@@ -941,33 +941,7 @@ if (!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("*
 	    if(!url) return message.reply("нужна ссылка на картинку")
 	    if(!url) return message.reply("нужно название");
 	    message.channel.guild.createEmoji(url, name)
-	    message.reply(`эмодзи :${name}: успешно создано.`)
-    } else if (['vote'].includes(command) && message.channel.guild.id === "422775194281705493") {
-	    actFUN = actFUN + 1;actALL = actALL +1;
-        const embed = new Discord
-            .RichEmbed().setColor("0000ff")
-            .setDescription(args.join(' '))
-            .addField('Автор', message.author);
-        let nick = message.author.username;
-        if (message.member.nickname != null) nick = message.member.nickname;
-        client.fetchWebhook('432592245850374154', 'uC5qHLjDtA-AVW5PU4nCKtq4JMohqm855pdiQzo8i3b0c4Saraxv_Iz-I4I7A4fDr6In').then(webhook => {
-            webhook.send('', {username: nick, avatarURL: message.author.avatarURL, embeds: [embed]}).catch(console.error);
-        }).catch(console.error);
-        message.channel.send(`**Голосование пользователя ${message.author} успешно начато**`);
-        message.delete();
-    } else if(['vote'].includes(command) && message.channel.guild.id === "435163536914907158") {
-	    actFUN = actFUN + 1;actALL = actALL +1;
-        const embed = new Discord
-            .RichEmbed().setColor("0000ff")
-            .setDescription(args.join(' '))
-            .addField('Автор', message.author);
-        if (message.member.nickname != null) nick = message.member.nickname;
-        client.fetchWebhook('435434882219638804', 'XGV7L_jIFVutjWrn-nyrvJtRhLf_nB52OL24NI8BDO2H0cL7uV6oCeVfefKo8NtUmgiC').then(webhook => {
-            webhook.send('', {username: nick, avatarURL: message.author.avatarURL, embeds: [embed]}).catch(console.error);
-        }).catch(console.error);
-        message.channel.send(`**Голосование пользователя ${message.author} успешно начато**`);
-        message.delete();
-	    const invi = '0';
+	    message.reply(`эмодзи :${name}: успешно создано.`
     } else if(['si', 'serverinfo'].includes(command)) {
 	    actFUN = actFUN + 1;actALL = actALL +1;
         message.channel.guild.fetchInvites().then(invites => invi === invites.size);
@@ -1071,10 +1045,10 @@ message.guild.channels.filter(chan => chan.type === 'voice').forEach((channel) =
         let userID = message.author.id
 
         if (message.author.verified == true) {
-            verified = "Да"
+            verified = "Yes"
         }
         if (message.author.status == "online") {
-            userStatus = "Онлайн"
+            userStatus = "Online"
         }
         
         
