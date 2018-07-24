@@ -111,7 +111,7 @@ client.on('message', async (message) => {
     .setThumbnail(member.user.avatarURL)
     .setColor('0x28ec13')
     if (member.guild.id === "361038979367436291") {
-        const channel = member.guild.channels.find("name", 'general');
+        const channel = message.channel.guild.id("431358294716841994");
         if (!channel) return;
         channel.send({embed})
     }
