@@ -941,7 +941,7 @@ if (!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("*
 	    if(!url) return message.reply("нужна ссылка на картинку")
 	    if(!url) return message.reply("нужно название");
 	    message.channel.guild.createEmoji(url, name)
-	    message.reply(`эмодзи :${name}: успешно создано.`
+	    message.reply(`эмодзи :${name}: успешно создано.`)	  
     } else if(['si', 'serverinfo'].includes(command)) {
 	    actFUN = actFUN + 1;actALL = actALL +1;
         message.channel.guild.fetchInvites().then(invites => invi === invites.size);
